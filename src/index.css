@@ -3,59 +3,122 @@
 @import url("https://fonts.googleapis.com/css2?family=Sekuya&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Diphylleia&family=Sekuya&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Shojumaru&display=swap");
+
 @import "tailwindcss";
+
+/* =========================================================
+   FONT
+========================================================= */
 
 .shojumaru-regular {
   font-family: "Shojumaru", system-ui;
   font-weight: 400;
   font-style: normal;
 }
+
 .sekuya-regular {
   font-family: "Sekuya", system-ui;
   font-weight: 400;
   font-style: normal;
 }
+
 .sekuya-200 {
   font-family: "Sekuya", system-ui;
   font-weight: 200;
   font-style: normal;
 }
+
 .diphylleia-regular {
   font-family: "Diphylleia", serif;
   font-weight: 400;
   font-style: normal;
 }
 
-/* =========================
-   Reset
-========================= */
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html,
 body,
 #root {
   width: 100%;
+  min-width: 0;
   min-height: 100%;
   margin: 0;
   padding: 0;
 }
 
+html {
+  overflow-y: auto;
+}
+
 body {
   font-family: "Noto Sans KR", sans-serif;
   background: #0d0a07;
+
+  /*
+    가로 스크롤만 방지
+    세로 스크롤은 내용이 많으면 자동으로 발생
+  */
   overflow-x: hidden;
-  overscroll-behavior: none;
+  overflow-y: auto;
+
+  /*
+    모바일에서 스크롤할 때 튕기는 효과 최소화
+  */
+  overscroll-behavior-x: none;
 }
 
-::-webkit-scrollbar {
-  display: none;
+#root {
+  min-height: 100dvh;
 }
 
-/* =========================
+/* =========================================================
+   기본 요소
+========================================================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+/* 모바일 input 자동 확대 방지 */
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* =========================================================
    공통 배경
-========================= */
+========================================================= */
 
 .bg-texture {
   background-color: #0d0a07;
+
   background-image:
     radial-gradient(ellipse at top, rgba(201, 148, 42, 0.12), transparent 60%),
     radial-gradient(ellipse at bottom, rgba(139, 26, 26, 0.15), transparent 60%);
@@ -95,9 +158,9 @@ body {
     );
 }
 
-/* =========================
+/* =========================================================
    공통 텍스트
-========================= */
+========================================================= */
 
 .title-glow {
   text-shadow:
@@ -112,9 +175,9 @@ body {
     0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-/* =========================
+/* =========================================================
    공통 애니메이션
-========================= */
+========================================================= */
 
 .wave-text {
   animation: waveFade 3s ease-in-out infinite;
@@ -146,17 +209,25 @@ body {
   }
 }
 
-/* 공통 버튼 */
+/* =========================================================
+   숫자 버튼
+========================================================= */
+
 .number-btn {
   width: 58px;
   height: 58px;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
+  flex-shrink: 0;
+
   border-radius: 14px;
   border: 1px solid rgba(201, 148, 42, 0.35);
+
   background: rgba(26, 18, 8, 0.35);
+
   color: #c9942a;
 
   transition: all 0.2s ease;
@@ -164,16 +235,29 @@ body {
 
 .number-btn:hover {
   border-color: #c9942a;
+
   box-shadow: 0 0 10px rgba(201, 148, 42, 0.25);
+
   background: rgba(201, 148, 42, 0.06);
 }
 
 .number-btn:active {
   transform: scale(0.95);
+
   background: rgba(201, 148, 42, 0.12);
 }
 
-/* 공통 버튼-pr */
+.number-btn-sm {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   RED BUTTON
+========================================================= */
+
 .number-btn-pr {
   display: flex;
   justify-content: center;
@@ -181,25 +265,28 @@ body {
 
   border-radius: 14px;
   border: 1px solid rgba(223, 15, 15, 0.35);
+
   background: rgba(43, 2, 1, 0.638);
+
   color: #f94e4e;
 
   transition: all 0.2s ease;
 }
 
-.number-btn-pr:hover,
-.number-btn-su:hover {
+.number-btn-pr:hover {
   border-color: #ff8b8b;
+
   box-shadow: 0 0 10px rgba(240, 160, 113, 0.25);
-  /* background: rgba(201, 148, 42, 0.06); */
 }
 
-.number-btn-pr:active,
-.number-btn-su:hover {
+.number-btn-pr:active {
   transform: scale(0.95);
-  /* background: rgba(201, 148, 42, 0.12); */
 }
-/* 공통 버튼-pr */
+
+/* =========================================================
+   BLUE BUTTON
+========================================================= */
+
 .number-btn-su {
   display: flex;
   justify-content: center;
@@ -207,23 +294,36 @@ body {
 
   border-radius: 14px;
   border: 1px solid rgba(27, 187, 211, 0.35);
+
   background: rgba(1, 20, 52, 0.536);
+
   color: rgb(73, 167, 255);
 
   transition: all 0.2s ease;
 }
-.number-btn-su:hover,
+
 .number-btn-su:hover {
   border-color: #7cd9f5;
+
   box-shadow: 0 0 10px rgba(240, 160, 113, 0.25);
-  /* background: rgba(201, 148, 42, 0.06); */
 }
 
-.number-btn-su.anchor-spin:active,
-.number-btn-su:hover {
+.number-btn-su:active {
   transform: scale(0.95);
-  /* background: rgba(201, 148, 42, 0.12); */
 }
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card-frame,
+.card-frame-su,
+.preview-card,
+.winner-card {
+  max-width: 100%;
+  min-width: 0;
+}
+
 .card-frame {
   position: relative;
 
@@ -239,6 +339,7 @@ body {
     0 8px 32px rgba(0, 0, 0, 0.6),
     inset 0 1px 0 rgba(201, 148, 42, 0.1);
 }
+
 .card-frame-su {
   position: relative;
 
@@ -255,10 +356,18 @@ body {
     inset 0 1px 0 rgba(201, 148, 42, 0.1);
 }
 
+/* =========================================================
+   PLAYER ROW
+========================================================= */
+
 .player-row {
   display: flex;
   align-items: center;
+
   gap: 12px;
+
+  width: 100%;
+  min-width: 0;
 
   padding: 12px 14px;
 
@@ -274,18 +383,19 @@ body {
 
   transition: all 0.2s;
 }
-.number-btn-sm {
-  width: 42px;
-  height: 42px;
-  /* background-color: #362201; */
-}
 
 .player-row:focus-within {
   border-color: rgba(201, 148, 42, 0.55);
 
   box-shadow: 0 0 15px rgba(201, 148, 42, 0.15);
 }
-.player-avatar {
+
+/* =========================================================
+   PLAYER AVATAR
+========================================================= */
+
+.player-avatar,
+.player-avatar-lose {
   width: 34px;
   height: 34px;
 
@@ -293,10 +403,14 @@ body {
   justify-content: center;
   align-items: center;
 
-  border-radius: 50%;
-
   flex-shrink: 0;
 
+  border-radius: 50%;
+}
+
+/* GOLD */
+
+.player-avatar {
   color: #fcfcfc;
 
   background: linear-gradient(
@@ -307,27 +421,19 @@ body {
     #c9942a 70%,
     #7a4f10 100%
   );
+
   box-shadow:
     0 0 15px rgba(255, 215, 0, 0.5),
     0 0 35px rgba(240, 192, 96, 0.35),
     inset 0 2px 4px rgba(255, 255, 255, 0.5),
     inset 0 -4px 8px rgba(80, 40, 0, 0.5);
 
-  /* border: 1px solid rgba(255, 215, 0, 0.7); */
   border: 1px solid rgba(214, 3, 3, 0.25);
 }
+
+/* RED */
+
 .player-avatar-lose {
-  width: 34px;
-  height: 34px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 50%;
-
-  flex-shrink: 0;
-
   color: #fff1f1;
 
   background: linear-gradient(
@@ -338,23 +444,33 @@ body {
     #a40a0a 70%,
     #7a1210 100%
   );
+
   box-shadow:
     0 0 15px rgba(255, 64, 0, 0.644),
     0 0 35px rgba(240, 125, 96, 0.35),
     inset 0 2px 4px rgba(255, 255, 255, 0.5),
     inset 0 -4px 8px rgba(80, 40, 0, 0.5);
 
-  /* border: 1px solid rgba(255, 215, 0, 0.7); */
   border: 1px solid rgba(214, 3, 3, 0.25);
 }
+
+/* =========================================================
+   PLAYER ELEMENTS
+========================================================= */
+
 .player-divider {
   width: 1px;
   height: 28px;
 
+  flex-shrink: 0;
+
   background: rgba(201, 148, 42, 0.18);
 }
+
 .player-num {
   width: 20px;
+
+  flex-shrink: 0;
 
   font-family: "Cinzel", serif;
 
@@ -365,32 +481,40 @@ body {
   font-weight: 700;
 
   font-size: 16px;
-
-  flex-shrink: 0;
 }
+
 .name-input {
   flex: 1;
+
+  width: 100%;
+  min-width: 0;
 
   background: transparent;
 
   border: none;
-
   outline: none;
 
   color: #e8d5a8;
 
-  font-size: 15px;
+  font-size: 16px;
 
   font-family: "Noto Sans KR", sans-serif;
 
   caret-color: #c9942a;
 }
+
 .name-input::placeholder {
   color: rgba(168, 144, 112, 0.35);
 }
+
 .name-input:focus {
   outline: none;
 }
+
+/* =========================================================
+   PREVIEW CARD
+========================================================= */
+
 .preview-card {
   border: 1px solid rgba(201, 148, 42, 0.2);
 
@@ -401,9 +525,42 @@ body {
   );
 }
 
+/* =========================================================
+   PIRATE CARD
+========================================================= */
+
+.pirate-card {
+  position: relative;
+
+  padding: 20px 24px;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(201, 148, 42, 0.35);
+
+  background: linear-gradient(
+    135deg,
+    rgba(40, 25, 10, 0.85),
+    rgba(13, 10, 7, 0.95)
+  );
+
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.5),
+    0 10px 30px rgba(0, 0, 0, 0.4);
+
+  backdrop-filter: blur(4px);
+}
+
+/* =========================================================
+   PIRATE BUTTON
+========================================================= */
+
 .pirate-btn {
   position: relative;
+
   overflow: hidden;
+
+  max-width: 100%;
 }
 
 .pirate-btn::before {
@@ -443,6 +600,10 @@ body {
   transform: scale(0.97);
 }
 
+/* =========================================================
+   GOLD BUTTON
+========================================================= */
+
 .btn-pirate {
   background: linear-gradient(
     135deg,
@@ -451,6 +612,7 @@ body {
   );
 
   backdrop-filter: blur(8px);
+
   border: 1px solid rgba(255, 235, 170, 0.8);
 
   box-shadow:
@@ -460,6 +622,19 @@ body {
 
   transition: all 0.25s ease;
 }
+
+.btn-pirate:hover {
+  transform: scale(1.02);
+
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(255, 200, 50, 0.45);
+}
+
+/* =========================================================
+   RED BUTTON
+========================================================= */
+
 .btn-pirate-pr {
   background: linear-gradient(
     135deg,
@@ -468,6 +643,7 @@ body {
   );
 
   backdrop-filter: blur(8px);
+
   border: 1px solid rgba(255, 194, 170, 0.8);
 
   box-shadow:
@@ -477,6 +653,11 @@ body {
 
   transition: all 0.25s ease;
 }
+
+/* =========================================================
+   BLUE BUTTON
+========================================================= */
+
 .btn-pirate-su {
   background: linear-gradient(
     135deg,
@@ -485,7 +666,6 @@ body {
   );
 
   backdrop-filter: blur(8px);
-  /* border: 1px solid rgba(123, 58, 148, 0.8); */
 
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.5),
@@ -495,16 +675,34 @@ body {
   transition: all 0.25s ease;
 }
 
+.btn-pirate-su:hover {
+  transform: scale(1.02);
+
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(255, 200, 50, 0.082);
+}
+
+/* =========================================================
+   BONUS BUTTON
+========================================================= */
+
 .btn-pirate-bo {
   backdrop-filter: blur(8px);
+
   border: 1px solid #a4289e90;
 
-  /* box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.5),
-    0 0 15px rgba(255, 200, 50, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6); */
-
   transition: all 0.25s ease;
+}
+
+.btn-pirate-bo:hover {
+  transform: scale(1.02);
+
+  color: #2b002b;
+
+  background: linear-gradient(135deg, rgb(215, 72, 255), rgb(244, 44, 255));
+
+  border: 1px solid rgba(92, 7, 125, 0.959);
 }
 
 .btn-pirate-bo-2 {
@@ -515,7 +713,6 @@ body {
   );
 
   backdrop-filter: blur(8px);
-  /* border: 1px solid rgba(123, 58, 148, 0.8); */
 
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.5),
@@ -525,30 +722,18 @@ body {
   transition: all 0.25s ease;
 }
 
-.btn-pirate:hover {
-  transform: scale(1.02);
-  box-shadow:
-    0 12px 36px rgba(0, 0, 0, 0.6),
-    0 0 25px rgba(255, 200, 50, 0.45);
-}
-.btn-pirate-su:hover {
-  transform: scale(1.02);
-  box-shadow:
-    0 12px 36px rgba(0, 0, 0, 0.6),
-    0 0 25px rgba(255, 200, 50, 0.082);
-}
 .btn-pirate-bo-2:hover {
   transform: scale(1.02);
+
   box-shadow:
     0 12px 36px rgba(0, 0, 0, 0.6),
     0 0 25px rgba(255, 200, 50, 0.082);
 }
-.btn-pirate-bo:hover {
-  transform: scale(1.02);
-  color: #2b002b;
-  background: linear-gradient(135deg, rgb(215, 72, 255), rgb(244, 44, 255));
-  border: 1px solid rgba(92, 7, 125, 0.959);
-}
+
+/* =========================================================
+   PIRATE TITLE
+========================================================= */
+
 .pirate-title {
   background: linear-gradient(
     180deg,
@@ -562,10 +747,10 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  /* 칙칙한 브라운 그림자 대신 어두운 외곽선 + 네온 느낌의 골드 글로우 */
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8))
     drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
 }
+
 .pirate-title-bo {
   background: linear-gradient(
     180deg,
@@ -579,7 +764,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  /* 칙칙한 브라운 그림자 대신 어두운 외곽선 + 네온 느낌의 골드 글로우 */
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8))
     drop-shadow(0 0 12px rgba(228, 19, 255, 0.6));
 }
@@ -597,10 +781,10 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  /* 칙칙한 브라운 그림자 대신 어두운 외곽선 + 네온 느낌의 골드 글로우 */
   filter: drop-shadow(0 4px 6px rgba(64, 0, 0, 0.8))
     drop-shadow(0 0 12px rgba(231, 53, 44, 0.6));
 }
+
 .pirate-title-su {
   background: linear-gradient(
     180deg,
@@ -614,10 +798,14 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  /* 칙칙한 브라운 그림자 대신 어두운 외곽선 + 네온 느낌의 골드 글로우 */
   filter: drop-shadow(0 4px 6px rgba(0, 12, 64, 0.8))
     drop-shadow(0 0 12px rgba(85, 149, 238, 0.6));
 }
+
+/* =========================================================
+   GOLD METAL
+========================================================= */
+
 .gold-metal-bg {
   background: linear-gradient(
     135deg,
@@ -637,171 +825,106 @@ body {
   border: 1px solid rgba(255, 215, 0, 0.7);
 }
 
-.bg-gold-treasure {
-  position: relative; /* 1. 자식의 기준점이 됨 */
-  z-index: 0; /* 4. 내부 글자들이 이미지보다 위에 오도록 설정 */
-}
+/* =========================================================
+   BACKGROUND IMAGE CARDS
+========================================================= */
 
-.bg-gold-treasure::after {
-  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
-  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
-
-  /* 작성하신 코드 */
-  background-image: url("/src/images/gold2.jpg");
-  background-size: 130%;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.2;
-}
-
-.bg-gold-lose {
-  position: relative; /* 1. 자식의 기준점이 됨 */
-  z-index: 0; /* 4. 내부 글자들이 이미지보다 위에 오도록 설정 */
-}
-
-.bg-gold-lose::after {
-  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
-  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
-
-  /* 작성하신 코드 */
-  background-image: url("/src/images/lose.jpg");
-  background-size: 120%;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.2;
-}
-
+.bg-gold-treasure,
+.bg-gold-lose,
 .bg-card,
 .bg-card-gold,
 .bg-mermaid,
 .bg-pirate,
 .bg-skull {
-  position: relative; /* 1. 자식의 기준점이 됨 */
-  z-index: 0; /* 4. 내부 글자들이 이미지보다 위에 오도록 설정 */
+  position: relative;
+  z-index: 0;
+}
+
+.bg-gold-treasure::after,
+.bg-gold-lose::after,
+.bg-card::after,
+.bg-card-gold::after,
+.bg-mermaid::after,
+.bg-pirate::after,
+.bg-skull::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-gold-treasure::after {
+  background-image: url("/src/images/gold2.jpg");
+  background-size: 130%;
+  opacity: 0.2;
+}
+
+.bg-gold-lose::after {
+  background-image: url("/src/images/lose.jpg");
+  background-size: 120%;
+  opacity: 0.2;
 }
 
 .bg-card::after {
-  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
-  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
-
-  /* 작성하신 코드 */
   background-image: url("/src/images/black.jpg");
   background-size: 100%;
-
   background-position: center 47%;
-  background-repeat: no-repeat;
   opacity: 0.3;
 }
 
 .bg-card-gold::after {
-  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
-  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
-
-  /* 작성하신 코드 */
   background-image: url("/src/images/card2.jpg");
   background-size: 100%;
-
   background-position: center 25%;
-  background-repeat: no-repeat;
   opacity: 0.3;
 }
 
 .bg-mermaid::after {
-  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
-  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
-
-  /* 작성하신 코드 */
   background-image: url("/src/images/mermaid4.jpg");
   background-size: 100%;
-
   background-position: center 40%;
-
-  background-repeat: no-repeat;
   opacity: 0.5;
 }
 
 .bg-pirate::after {
-  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
-  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
-
-  /* 작성하신 코드 */
   background-image: url("/src/images/pirate5.png");
   background-size: 100%;
-
   background-position: center 15%;
-
-  background-repeat: no-repeat;
   opacity: 0.3;
 }
 
 .bg-skull::after {
-  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
-  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
-
-  /* 작성하신 코드 */
   background-image: url("/src/images/skull2.jpg");
   background-size: 100%;
-
   background-position: center 25%;
-
-  background-repeat: no-repeat;
   opacity: 0.4;
 }
-/* 뱃지 */
+
+/* =========================================================
+   BONUS BADGE
+========================================================= */
+
 .bonus-badge {
   width: 42px;
   height: 42px;
-
-  border-radius: 50%;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
+  border-radius: 50%;
+
   font-size: 20px;
 
   border: 1px solid;
-  /* box-shadow:
-    0 0 10px rgba(255, 255, 255, 0.4),
-    inset 0 0 10px rgba(255, 255, 255, 0.3); */
 }
+
 .bg-card-gold-badge {
   background: linear-gradient(145deg, #fff01d, #85ff2e 30%, #ba26ff);
 
@@ -809,6 +932,7 @@ body {
 
   color: #ffffff;
 }
+
 .bg-card-badge {
   background: linear-gradient(145deg, #242323, #000000);
 
@@ -816,6 +940,7 @@ body {
 
   color: #ffffff;
 }
+
 .bg-pirate-badge {
   background: linear-gradient(145deg, #f20404, #520000);
 
@@ -823,6 +948,7 @@ body {
 
   color: #ffffff;
 }
+
 .bg-mermaid-badge {
   background: linear-gradient(145deg, #17ffd8, #02564d);
 
@@ -830,6 +956,7 @@ body {
 
   color: #ffffff;
 }
+
 .bg-skull-badge {
   background: linear-gradient(145deg, #ffc524, #ff4800);
 
@@ -838,39 +965,48 @@ body {
   color: #ffffff;
 }
 
+/* =========================================================
+   WINNER CARD
+========================================================= */
+
 .winner-card {
   position: relative;
-  overflow: hidden;
-  z-index: 0;
 
-  /* border: 1px solid rgba(201, 148, 42, 0.35); */
+  overflow: hidden;
+
+  z-index: 0;
 }
 
 .winner-card::after {
   content: "";
 
   position: absolute;
+
   inset: 0;
 
   background-image: url("/src/images/winner.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
   opacity: 0.25;
 
   z-index: -1;
 }
-/* 🪙 해적 동전 메달 공통 */
-/* 순위 숫자 공통 */
+
+/* =========================================================
+   RANK MEDAL
+========================================================= */
+
 .rank-medal {
   width: 35px;
-  /* height: 35px; */
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   font-family: "Cinzel", serif;
+
   font-size: 18px;
   font-weight: 900;
 
@@ -880,159 +1016,245 @@ body {
   background: transparent;
 }
 
-/* 🥇 1등 */
 .rank-gold {
   color: #ffd700;
+
   border-color: #ffd700;
 
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
 }
 
-/* 🥈 2등 */
 .rank-silver {
   color: #dcdcdc;
+
   border-color: #dcdcdc;
 
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-/* 🥉 3등 */
 .rank-bronze {
   color: #cd7f32;
+
   border-color: #cd7f32;
 
   text-shadow: 0 0 8px rgba(205, 127, 50, 0.5);
 }
 
-/* 4등 이후 */
 .rank-normal {
   color: #a89070;
+
   border-color: rgba(168, 144, 112, 0.5);
 }
+
 /* =========================================================
-   RESPONSIVE
-   모든 페이지 공통 반응형
+   ROPE
 ========================================================= */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+.rope-divider {
+  height: 2px;
 
-html,
-body,
-#root {
-  width: 100%;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-}
+  background: repeating-linear-gradient(
+    90deg,
+    #7a5c2a 0,
+    #7a5c2a 8px,
+    #c9942a 8px,
+    #c9942a 12px,
+    #7a5c2a 12px,
+    #7a5c2a 20px
+  );
 
-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-#root {
-  min-height: 100dvh;
+  opacity: 0.6;
 }
 
 /* =========================================================
-   공통 페이지 영역
+   COMMON PAGE
 ========================================================= */
 
 .page,
 .start-page {
   width: 100%;
-  min-height: 100dvh;
   min-width: 0;
+  min-height: 100dvh;
 
   overflow-x: hidden;
 }
 
 /* =========================================================
-   공통 요소
+   GAME PAGE
 ========================================================= */
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-input,
-button {
-  max-width: 100%;
-}
-
-.flex {
-  min-width: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-p,
-span {
-  max-width: 100%;
-  overflow-wrap: break-word;
-}
-
-/* =========================================================
-   공통 카드
-========================================================= */
-
-.card-frame,
-.card-frame-su,
-.preview-card,
-.winner-card {
-  max-width: 100%;
-  min-width: 0;
-}
-
-/* =========================================================
-   공통 플레이어
-========================================================= */
-
-.player-row {
-  min-width: 0;
-}
-
-.player-avatar,
-.player-avatar-lose {
-  flex-shrink: 0;
-}
-
-.player-divider {
-  flex-shrink: 0;
-}
-
-.player-num {
-  flex-shrink: 0;
-}
-
-.name-input {
-  min-width: 0;
+.game-page {
   width: 100%;
+  min-width: 0;
+
+  min-height: 100dvh;
+
+  /*
+    height를 고정하지 않음.
+    내용이 많아지면 페이지 자체가 늘어나고
+    body에서 스크롤 가능
+  */
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-x: hidden;
 }
 
 /* =========================================================
-   공통 버튼
+   GAME HEADER
 ========================================================= */
 
-.number-btn,
-.number-btn-sm {
-  flex-shrink: 0;
+.game-header {
+  padding-top: clamp(16px, 4vh, 32px);
+
+  padding-bottom: clamp(4px, 1vh, 12px);
 }
 
-.pirate-btn,
-.btn-pirate,
-.btn-pirate-pr,
-.btn-pirate-su,
-.btn-pirate-bo,
-.btn-pirate-bo-2 {
-  max-width: 100%;
+.game-progress {
+  padding-bottom: clamp(10px, 2vh, 20px);
+}
+
+.game-title {
+  margin-top: clamp(0px, 0.5vh, 1px);
+}
+
+/* =========================================================
+   PAGE CONTENT
+========================================================= */
+
+.page-content {
+  width: 100%;
+  min-width: 0;
+}
+
+/* =========================================================
+   PAGE FOOTER
+========================================================= */
+
+.page-footer {
+  width: 100%;
+
+  margin-top: auto;
+
+  flex-shrink: 0;
+
+  padding: 20px;
+}
+
+/* =========================================================
+   START PAGE
+========================================================= */
+
+.start-page {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100dvh;
+
+  padding: 32px 20px;
+
+  overflow-x: hidden;
+}
+
+.start-top {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+}
+
+.start-main {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 32px;
+
+  padding: 0 24px;
+}
+
+.start-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================================================
+   START SKULL
+========================================================= */
+
+.start-skull {
+  width: 112px;
+  height: 112px;
+}
+
+.start-skull-icon {
+  font-size: 60px;
+}
+
+/* =========================================================
+   START TITLE
+========================================================= */
+
+.start-title h1:first-child {
+  font-size: 60px;
+  line-height: 0.95;
+}
+
+.start-title h1:nth-child(2) {
+  font-size: 72px;
+  line-height: 0.95;
+}
+
+.start-title p {
+  font-size: 20px;
+
+  margin-top: 8px;
+}
+
+/* =========================================================
+   START CARD
+========================================================= */
+
+.start-card {
+  width: 100%;
+  max-width: 320px;
+
+  padding: 20px 24px;
+}
+
+.start-card p {
+  font-size: 14px;
+  line-height: 1.625;
+}
+
+/* =========================================================
+   START BUTTON
+========================================================= */
+
+.start-button {
+  width: 100%;
+  max-width: 320px;
+
+  padding: 16px 40px;
+
+  font-size: 16px;
+}
+
+/* =========================================================
+   START FOOTER
+========================================================= */
+
+.start-ship {
+  font-size: 12px;
+}
+
+.start-footer-text {
+  font-size: 12px;
 }
 
 /* =========================================================
@@ -1047,52 +1269,137 @@ span {
     min-width: 0;
   }
 
+  html {
+    overflow-y: auto;
+  }
+
   body {
     overflow-x: hidden;
     overflow-y: auto;
   }
 
   /*
-    페이지가 화면보다 작으면 그대로 표시하고
-    내용이 많아지면 세로 스크롤
+    페이지 높이를 고정하지 않음.
+    내용이 많으면 body 스크롤 발생
   */
   .page,
-  .start-page {
+  .start-page,
+  .game-page {
+    width: 100%;
     min-height: 100dvh;
     height: auto;
+
     overflow-x: hidden;
-    overflow-y: visible;
   }
 
-  /* =========================
-     공통 여백
-  ========================= */
+  /* =======================================================
+     START
+  ======================================================= */
 
-  .px-5 {
-    padding-left: 16px;
-    padding-right: 16px;
+  .start-page {
+    padding: clamp(20px, 5vh, 32px) 16px;
   }
 
-  .px-6 {
-    padding-left: 20px;
-    padding-right: 20px;
+  .start-top {
+    padding-top: 0;
   }
 
-  /* =========================
-     카드
-  ========================= */
+  .start-main {
+    gap: clamp(18px, 4vh, 32px);
 
-  .card-frame,
-  .card-frame-su,
-  .preview-card,
-  .winner-card {
+    padding-left: clamp(8px, 5vw, 24px);
+
+    padding-right: clamp(8px, 5vw, 24px);
+  }
+
+  /* skull */
+
+  .start-skull {
+    width: clamp(78px, 24vw, 112px);
+
+    height: clamp(78px, 24vw, 112px);
+  }
+
+  .start-skull-icon {
+    font-size: clamp(42px, 13vw, 60px);
+  }
+
+  /* title */
+
+  .start-title h1:first-child {
+    font-size: clamp(40px, 15vw, 60px);
+  }
+
+  .start-title h1:nth-child(2) {
+    font-size: clamp(48px, 18vw, 72px);
+  }
+
+  .start-title p {
+    font-size: clamp(15px, 5vw, 20px);
+
+    margin-top: clamp(4px, 1.5vw, 8px);
+  }
+
+  /* card */
+
+  .start-card {
     width: 100%;
-    max-width: 100%;
+    max-width: min(320px, 90vw);
+
+    padding: clamp(14px, 4vw, 20px) clamp(16px, 5vw, 24px);
   }
 
-  /* =========================
-     Player
-  ========================= */
+  .start-card p {
+    font-size: clamp(12px, 3.5vw, 14px);
+  }
+
+  /* button */
+
+  .start-button {
+    width: 100%;
+    max-width: min(320px, 90vw);
+
+    padding: clamp(12px, 4vw, 16px) clamp(24px, 8vw, 40px);
+
+    font-size: clamp(14px, 4vw, 16px);
+  }
+
+  /* footer */
+
+  .start-ship {
+    font-size: clamp(9px, 3vw, 12px);
+  }
+
+  .start-footer-text {
+    font-size: clamp(9px, 3vw, 12px);
+  }
+
+  /* =======================================================
+     GAME PAGE
+  ======================================================= */
+
+  .game-page {
+    min-height: 100dvh;
+    height: auto;
+
+    overflow-x: hidden;
+  }
+
+  .page-content {
+    min-width: 0;
+  }
+
+  .page-footer {
+    width: 100%;
+
+    padding: 16px;
+
+    margin-top: auto;
+  }
+
+  /* =======================================================
+     PLAYER
+  ======================================================= */
 
   .player-row {
     width: 100%;
@@ -1123,12 +1430,16 @@ span {
     min-width: 0;
     width: 100%;
 
-    font-size: 14px;
+    /*
+      16px 유지해서
+      iPhone Safari 자동 확대 방지
+    */
+    font-size: 16px;
   }
 
-  /* =========================
-     숫자 버튼
-  ========================= */
+  /* =======================================================
+     NUMBER BUTTON
+  ======================================================= */
 
   .number-btn {
     width: 50px;
@@ -1140,9 +1451,9 @@ span {
     height: 38px;
   }
 
-  /* =========================
-     뱃지
-  ========================= */
+  /* =======================================================
+     BADGE
+  ======================================================= */
 
   .bonus-badge {
     width: 38px;
@@ -1151,9 +1462,9 @@ span {
     font-size: 18px;
   }
 
-  /* =========================
-     순위 메달
-  ========================= */
+  /* =======================================================
+     RANK
+  ======================================================= */
 
   .rank-medal {
     width: 32px;
@@ -1161,9 +1472,9 @@ span {
     font-size: 16px;
   }
 
-  /* =========================
-     버튼
-  ========================= */
+  /* =======================================================
+     BUTTON
+  ======================================================= */
 
   .pirate-btn,
   .btn-pirate,
@@ -1175,17 +1486,18 @@ span {
     max-width: 100%;
   }
 
-  /* =========================
-     긴 텍스트
-  ========================= */
+  /* =======================================================
+     PX
+  ======================================================= */
 
-  h1,
-  h2,
-  h3,
-  h4,
-  p,
-  span {
-    max-width: 100%;
+  .px-5 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .px-6 {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -1196,6 +1508,7 @@ span {
 @media (max-width: 380px) {
   .player-row {
     gap: 6px;
+
     padding: 9px;
   }
 
@@ -1208,11 +1521,12 @@ span {
   .player-num {
     width: 16px;
     min-width: 16px;
+
     font-size: 13px;
   }
 
   .name-input {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .number-btn {
@@ -1228,100 +1542,16 @@ span {
   .bonus-badge {
     width: 36px;
     height: 36px;
+
     font-size: 16px;
   }
 
   .rank-medal {
     width: 30px;
+
     font-size: 15px;
   }
-}
 
-/* =========================
-   공통 게임 페이지
-========================= */
-
-.game-page {
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* 페이지 하단 버튼 영역 */
-.page-footer {
-  margin-top: auto;
-  flex-shrink: 0;
-  padding: 32px 20px 32px;
-}
-html {
-  overflow-y: scroll;
-}
-
-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-/* =========================
-   공통 페이지 여백
-========================= */
-
-.game-header {
-  padding-top: clamp(16px, 4vh, 32px);
-  padding-bottom: clamp(4px, 1vh, 12px);
-}
-
-.game-progress {
-  padding-bottom: clamp(10px, 2vh, 20px);
-}
-
-.game-title {
-  margin-top: clamp(0px, 0.5vh, 6px);
-}
-
-/* =========================================
-   공통 페이지 레이아웃
-========================================= */
-
-.game-page {
-  width: 100%;
-  min-height: 100dvh;
-}
-
-/* 콘텐츠가 적으면 버튼이 화면 아래 */
-.page-content {
-  width: 100%;
-}
-
-/* 콘텐츠가 많아지면 자연스럽게 아래로 이어짐 */
-.page-footer {
-  width: 100%;
-  margin-top: auto;
-  padding: 20px;
-}
-
-/* =========================================
-   모바일
-========================================= */
-
-@media (max-width: 640px) {
-  .game-page {
-    min-height: 100dvh;
-  }
-
-  .page-footer {
-    padding: 16px;
-  }
-
-  .page-content {
-    min-width: 0;
-  }
-}
-
-/* =========================================
-   작은 모바일
-========================================= */
-
-@media (max-width: 380px) {
   .page-footer {
     padding: 12px;
   }

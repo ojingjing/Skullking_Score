@@ -63,125 +63,69 @@ export default function GameSetUp({ players, setPlayers }) {
   }
 
   return (
-    <div
-      className="
-        game-page
-        min-h-[100dvh]
-        flex
-        flex-col
-        bg-texture
-        text-[#e8d5a8]
-        px-4
-      "
-    >
-      {/* =========================
-          HEADER
-      ========================= */}
-      <div className="flex items-center justify-between px-5 pt-4 sm:pt-8 pb-2 sm:pb-3">
-        <div className="w-8" />
+    <div className="game-page min-h-[100dvh] flex flex-col bg-texture px-3 sm:px-4 text-[#e8d5a8]">
+      {/* HEADER */}
+      <div className="flex items-center px-3 sm:px-5">
+        <div className="w-8 shrink-0" />
 
-        <p className="sekuya-200 text-xs text-[#d09f3d80] text-center"></p>
+        <div className="flex-1 min-w-0 text-center">
+          <p className="sekuya-200 text-xs text-[#d09f3d80]"></p>
+        </div>
 
-        <div className="w-8" />
+        <div className="w-8 shrink-0" />
       </div>
 
-      {/* =========================
-          PROGRESS
-      ========================= */}
+      {/* PROGRESS */}
       <div className="game-progress flex justify-center gap-2 pb-3 sm:pb-5">
         <div className="progress-dot active"></div>
         <div className="progress-dot"></div>
         <div className="progress-dot"></div>
       </div>
 
-      {/* =========================
-          CONTENT
-      ========================= */}
-      <main className="flex-1 min-h-0">
-        {/* Title */}
-        <div className="game-title flex flex-col items-center px-4 sm:px-6 gap-1 sm:gap-2">
-          <h2
-            className="
-              diphylleia-regular
-              text-2xl
-              sm:text-3xl
-              font-bold
-              pirate-title
-              text-center
-              whitespace-nowrap
-            "
+      {/* TITLE */}
+      <div className="px-3 sm:px-6 text-center">
+        <h2 className="diphylleia-regular text-2xl sm:text-3xl font-bold pirate-title whitespace-nowrap">
+          🔸 해적단 설정 🔸
+        </h2>
+
+        <p className="text-[11px] sm:text-xs text-[#c09244] mt-1">
+          해적의 수와 이름을 설정해주세요. (2~8명)
+        </p>
+      </div>
+
+      {/* PLAYER COUNT */}
+      <div className="mt-4 sm:mt-6 flex flex-col items-center">
+        <p className="text-xs text-[#a89070] mb-2 sm:mb-3">해적 수</p>
+
+        <div className="flex items-center gap-4 sm:gap-6">
+          <button
+            className="number-btn"
+            onClick={() => changePlayerCount(players.length - 1)}
           >
-            🔸 해적단 설정 🔸
-          </h2>
+            <span className="text-2xl sm:text-3xl font-cinzel">−</span>
+          </button>
 
-          <p className="text-[11px] sm:text-xs text-[#c09244] text-center">
-            해적의 수와 이름을 설정해주세요. (2~8명)
-          </p>
-        </div>
-
-        {/* =========================
-            PLAYER COUNT
-        ========================= */}
-        <div className="mt-5 sm:mt-8 flex flex-col items-center">
-          <p className="text-xs text-[#a89070] mb-2 sm:mb-3">해적 수</p>
-
-          <div className="flex items-center gap-4 sm:gap-6">
-            <button
-              className="number-btn"
-              onClick={() => changePlayerCount(players.length - 1)}
-            >
-              <span className="text-2xl sm:text-3xl font-cinzel">−</span>
-            </button>
-
-            <div className="text-center">
-              <p
-                className="
-                  sekuya-regular
-                  text-3xl
-                  sm:text-4xl
-                  pirate-title
-                "
-              >
-                {players.length}
-              </p>
-            </div>
-
-            <button
-              className="number-btn"
-              onClick={() => changePlayerCount(players.length + 1)}
-            >
-              <span className="text-2xl sm:text-3xl font-cinzel">+</span>
-            </button>
+          <div className="text-center">
+            <p className="sekuya-regular text-3xl sm:text-4xl pirate-title">
+              {players.length}
+            </p>
           </div>
-        </div>
 
-        {/* =========================
-            PREVIEW
-        ========================= */}
-        <div
-          className="
-            preview-card
-            mt-5
-            sm:mt-6
-            rounded-xl
-            p-3
-            sm:p-4
-            w-full
-          "
-        >
+          <button
+            className="number-btn"
+            onClick={() => changePlayerCount(players.length + 1)}
+          >
+            <span className="text-2xl sm:text-3xl font-cinzel">+</span>
+          </button>
+        </div>
+      </div>
+
+      {/* SELECTED PIRATES */}
+      <div className="w-full px-2 sm:px-5 mt-4 sm:mt-5">
+        <div className="preview-card w-full min-w-0 rounded-xl px-3 sm:px-5 py-3 sm:py-4">
           <p className="text-center text-xs text-[#a89070]">선택된 해적단</p>
 
-          <div
-            className="
-              flex
-              justify-center
-              items-center
-              gap-2
-              flex-wrap
-              mt-3
-              sm:mt-4
-            "
-          >
+          <div className="flex justify-center items-center gap-2 flex-wrap mt-2 sm:mt-3">
             {Array.from({ length: 8 }).map((_, index) => (
               <FaUserNinja
                 key={index}
@@ -196,84 +140,78 @@ export default function GameSetUp({ players, setPlayers }) {
             ))}
           </div>
 
-          <p
-            className="
-              text-center
-              mt-2
-              sm:mt-3
-              shojumaru-regular
-              pirate-title
-              text-lg
-              sm:text-xl
-            "
-          >
+          <p className="text-center mt-2 sm:mt-3 shojumaru-regular pirate-title text-lg sm:text-xl">
             {players.length} Pirates
           </p>
         </div>
+      </div>
 
-        {/* =========================
-            PLAYER LIST
-        ========================= */}
-        <div className="mt-4 sm:mt-6 px-1 sm:px-1 space-y-2 sm:space-y-3">
-          {players.map((player, index) => (
-            <div key={index} className="player-row">
-              <div className="player-avatar">
-                <FaSkull />
-              </div>
-
-              <div className="player-divider"></div>
-
-              <span className="player-num">{index + 1}</span>
-
-              <input
-                maxLength={7}
-                value={player.name}
-                placeholder="해적 이름"
-                onChange={(e) => changePlayerName(index, e.target.value)}
-                className="name-input"
-              />
-
-              <div className="w-5 flex justify-center">
-                {player.name.trim() && (
-                  <FaCheck className="text-[#c9942a] text-xs" />
-                )}
-              </div>
+      {/* PLAYER LIST */}
+      <div className="w-full px-2 sm:px-5 mt-3 sm:mt-5 space-y-2 sm:space-y-3">
+        {players.map((player, index) => (
+          <div
+            key={index}
+            className="
+              player-row
+              w-full
+              min-w-0
+              rounded-xl
+              px-3 sm:px-5
+              py-2.5 sm:py-4
+              min-h-[58px]
+              sm:min-h-[66px]
+            "
+          >
+            <div className="player-avatar w-8 h-8 sm:w-[34px] sm:h-[34px] shrink-0">
+              <FaSkull />
             </div>
-          ))}
 
-          <p className="text-center text-[11px] sm:text-xs text-[#7a5c2a] pt-1 sm:pt-2">
-            <FaLightbulb className="inline mr-1" />
-            이름은 최대 7자까지 입력 가능합니다.
-          </p>
+            <div className="player-divider h-6 sm:h-7 shrink-0"></div>
 
-          {error && (
-            <p className="text-center text-red-400 text-xs sm:text-sm">
-              {error}
-            </p>
-          )}
-        </div>
-      </main>
+            <span className="player-num shrink-0">{index + 1}</span>
 
-      {/* =========================
-          FOOTER
-      ========================= */}
-      <div
-        className="
-          page-footer
-          mt-auto
-          px-1
-          sm:px-1
-          pt-4
-          sm:pt-8
-          pb-4
-          sm:pb-8
-        "
-      >
+            <input
+              maxLength={7}
+              value={player.name}
+              placeholder="해적 이름"
+              onChange={(e) => changePlayerName(index, e.target.value)}
+              className="name-input min-w-0 w-full"
+            />
+
+            <div className="w-5 shrink-0 flex justify-center">
+              {player.name.trim() && (
+                <FaCheck className="text-[#c9942a] text-xs" />
+              )}
+            </div>
+          </div>
+        ))}
+
+        <p className="text-center text-[11px] sm:text-xs text-[#7a5c2a] pt-1 sm:pt-2">
+          <FaLightbulb className="inline mr-1" />
+          이름은 최대 7자까지 입력 가능합니다.
+        </p>
+
+        {error && (
+          <p className="text-center text-red-400 text-xs sm:text-sm">{error}</p>
+        )}
+      </div>
+
+      {/* FOOTER */}
+      <div className="page-footer w-full px-3 sm:px-5 pt-4 sm:pt-5 pb-4 sm:pb-8 shrink-0">
         <div className="rope-divider mb-4 sm:mb-6"></div>
 
         <button
           onClick={handleStartGame}
-          className="btn-pirate w-full rounded-xl py-4 font-cinzel font-bold text-[#4f2d07] pirate-btn"
+          className="
+            btn-pirate
+            w-full
+            rounded-xl
+            py-4
+            font-cinzel
+            font-bold
+            text-[#4f2d07]
+            pirate-btn
+          "
         >
           <FaAnchor className="inline mr-2" />
           게임 시작

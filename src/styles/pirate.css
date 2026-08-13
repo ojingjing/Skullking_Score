@@ -1,6 +1,6 @@
-/* =========================
-   버튼
-========================= */
+/* =========================================================
+   COMMON
+========================================================= */
 
 /* =========================
    로프
@@ -8,6 +8,7 @@
 
 .rope-divider {
   height: 2px;
+  width: 100%;
 
   background: repeating-linear-gradient(
     90deg,
@@ -23,8 +24,9 @@
 }
 
 /* =========================
-   카드
+   기본 카드
 ========================= */
+
 .card-frame {
   position: relative;
 
@@ -40,6 +42,10 @@
     0 8px 32px rgba(0, 0, 0, 0.6),
     inset 0 1px 0 rgba(201, 148, 42, 0.1);
 }
+
+/* =========================
+   Prediction 카드
+========================= */
 
 .card-frame-pr {
   position: relative;
@@ -58,13 +64,15 @@
 }
 
 /* =========================
-   카드 모서리
+   카드 모서리 장식
 ========================= */
 
 .corner-deco {
   position: absolute;
+
   width: 20px;
   height: 20px;
+
   border-color: rgba(201, 148, 42, 0.4);
   border-style: solid;
 }
@@ -94,7 +102,7 @@
 }
 
 /* =========================
-   해골
+   해골 장식
 ========================= */
 
 .skull-decoration {
@@ -124,34 +132,35 @@
 .dashed-circle {
   border: 1px dashed rgba(201, 148, 42, 0.2);
 }
-/* =========================
-   SKULL KING 금속 타이틀
-========================= */
 
 /* =========================
-   설명 카드 가죽 느낌
+   설명 카드
 ========================= */
 
 .pirate-card {
-  /* 기존 작성하신 코드 */
+  position: relative;
+
+  padding: 20px 24px;
+
+  border: 1px solid rgba(201, 148, 42, 0.35);
+  border-radius: 12px;
+
   background: linear-gradient(
     135deg,
     rgba(40, 25, 10, 0.85),
     rgba(13, 10, 7, 0.95)
   );
-  border: 1px solid rgba(201, 148, 42, 0.35);
+
   box-shadow:
     inset 0 0 30px rgba(0, 0, 0, 0.5),
     0 10px 30px rgba(0, 0, 0, 0.4);
 
-  border-radius: 12px; /* 모서리를 부드럽게 */
-  padding: 20px 24px; /* 여백을 주어 글자와 간격 확보 */
-  backdrop-filter: blur(4px); /* 뒷배경을 은은하게 블러 처리 */
-  position: relative; /* 브래킷(`┌ ┘`) 위치 잡기 편하게 설정 */
+  backdrop-filter: blur(4px);
 }
-/* =========================
-   버튼 빛 이동 효과
-========================= */
+
+/* =========================================================
+   BUTTON
+========================================================= */
 
 .pirate-btn {
   position: relative;
@@ -195,6 +204,10 @@
   transform: scale(0.97);
 }
 
+/* =========================
+   기본 해적 버튼
+========================= */
+
 .btn-pirate {
   background: linear-gradient(
     135deg,
@@ -202,7 +215,6 @@
     rgba(246, 169, 2, 0.85)
   );
 
-  backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 235, 170, 0.8);
 
   box-shadow:
@@ -210,11 +222,14 @@
     0 0 15px rgba(255, 200, 50, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
 
+  backdrop-filter: blur(8px);
+
   transition: all 0.25s ease;
 }
 
 .btn-pirate:hover {
   transform: scale(1.02);
+
   box-shadow:
     0 12px 36px rgba(0, 0, 0, 0.6),
     0 0 25px rgba(255, 200, 50, 0.45);
@@ -222,55 +237,6 @@
 
 /* =========================================================
    START PAGE
-   PC 디자인은 기존 그대로 유지
-========================================================= */
-
-.start-page {
-  min-height: 100vh;
-  min-height: 100dvh;
-
-  display: flex;
-  flex-direction: column;
-
-  padding: 32px 20px;
-  box-sizing: border-box;
-
-  overflow-x: hidden;
-}
-
-.start-top {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  padding-top: 16px;
-}
-
-.start-main {
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 32px;
-
-  padding: 32px 24px;
-}
-
-.start-bottom {
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding-bottom: 4px;
-}
-/* =========================================================
-   START PAGE
-   PC 디자인 기준
 ========================================================= */
 
 .start-page {
@@ -281,20 +247,28 @@
   flex-direction: column;
   justify-content: space-between;
 
+  box-sizing: border-box;
+
   padding: 32px 20px;
 
   overflow-x: hidden;
   overflow-y: auto;
 }
 
+/* =========================
+   상단
+========================= */
+
 .start-top {
   width: 100%;
 
   display: flex;
   justify-content: center;
-
-  padding-top: 16px;
 }
+
+/* =========================
+   메인
+========================= */
 
 .start-main {
   width: 100%;
@@ -306,15 +280,25 @@
   gap: 32px;
 
   padding: 0 24px;
+
+  box-sizing: border-box;
 }
 
+/* =========================
+   하단
+========================= */
+
 .start-bottom {
+  width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* 해골 */
+/* =========================
+   해골
+========================= */
 
 .start-skull {
   width: 112px;
@@ -325,7 +309,9 @@
   font-size: 60px;
 }
 
-/* 제목 */
+/* =========================
+   제목
+========================= */
 
 .start-title h1:first-child {
   font-size: 60px;
@@ -338,16 +324,21 @@
 }
 
 .start-title p {
-  font-size: 20px;
   margin-top: 8px;
+  font-size: 20px;
 }
 
-/* 설명 카드 */
+/* =========================
+   설명 카드
+========================= */
 
 .start-card {
+  width: 100%;
   max-width: 320px;
 
   padding: 20px 24px;
+
+  box-sizing: border-box;
 }
 
 .start-card p {
@@ -355,39 +346,47 @@
   line-height: 1.625;
 }
 
-/* 버튼 */
+/* =========================
+   시작 버튼
+========================= */
 
 .start-button {
+  width: 100%;
   max-width: 320px;
 
   padding: 16px 40px;
 
   font-size: 16px;
+
+  box-sizing: border-box;
 }
 
-/* 하단 */
+/* =========================
+   하단 텍스트
+========================= */
 
-.start-ship {
-  font-size: 12px;
-}
-
+.start-ship,
 .start-footer-text {
   font-size: 12px;
 }
 
 /* =========================================================
    MOBILE
-   PC 디자인 비율을 유지하면서 축소
+   640px 이하
 ========================================================= */
 
 @media (max-width: 640px) {
+  /* =========================
+     전체
+  ========================= */
+
   .start-page {
-    padding: clamp(20px, 5vh, 32px) 16px;
+    padding: clamp(16px, 5vh, 32px) 16px;
   }
 
-  .start-top {
-    padding-top: clamp(6px, 2vh, 16px);
-  }
+  /* =========================
+     메인
+  ========================= */
 
   .start-main {
     gap: clamp(18px, 4vh, 32px);
@@ -422,9 +421,9 @@
   }
 
   .start-title p {
-    font-size: clamp(15px, 5vw, 20px);
-
     margin-top: clamp(4px, 1.5vw, 8px);
+
+    font-size: clamp(15px, 5vw, 20px);
   }
 
   /* =========================
@@ -443,7 +442,7 @@
   }
 
   /* =========================
-     버튼
+     시작 버튼
   ========================= */
 
   .start-button {
@@ -459,11 +458,42 @@
      하단
   ========================= */
 
-  .start-ship {
-    font-size: clamp(9px, 3vw, 12px);
-  }
-
+  .start-ship,
   .start-footer-text {
     font-size: clamp(9px, 3vw, 12px);
+  }
+}
+
+/* =========================================================
+   아주 작은 모바일
+   360px 이하
+========================================================= */
+
+@media (max-width: 360px) {
+  .start-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .start-main {
+    gap: 16px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .start-title h1:first-child {
+    font-size: 36px;
+  }
+
+  .start-title h1:nth-child(2) {
+    font-size: 44px;
+  }
+
+  .start-card {
+    padding: 12px 14px;
+  }
+
+  .start-button {
+    padding: 12px 20px;
   }
 }

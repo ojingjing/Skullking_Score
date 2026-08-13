@@ -95,8 +95,8 @@ export default function Result({
                 w-full
                 min-w-0
                 rounded-xl
-                px-3 sm:px-5
-                py-2.5 sm:py-4
+                px-6 sm:px-5
+                py-3 sm:py-4
                 border
                 ${
                   isSuccess

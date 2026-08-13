@@ -32,7 +32,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="min-h-[100dvh] w-full bg-texture text-white">
-        <div className="mx-auto w-full max-w-md">
+        <div className="mx-auto w-full max-w-md min-h-[100dvh]">
           <Routes>
             <Route path="/" element={<Navigate to="/start" replace />} />
 

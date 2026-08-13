@@ -10,8 +10,32 @@ export default function Start() {
     <div className="start-page stars-bg bg-texture text-[#e8d5a8]">
       {/* 상단 */}
       <div className="start-top">
-        <div className="skull-decoration tracking-widest">
-          ✦ ☠ ✦ ☠ ✦ ☠ ✦ ☠ ✦
+        <div className="flex gap-3 items-center text-[rgba(201,148,42,.3)]">
+          <FaShip className="start-ship" />
+          <span className="font-cinzel start-footer-text tracking-widest">
+            ✦
+          </span>
+          <FaShip className="start-ship scale-x-[-1]" />
+          <span className="font-cinzel start-footer-text tracking-widest">
+            ✦
+          </span>
+          <FaShip className="start-ship scale-x-[-1]" />
+          <span className="font-cinzel start-footer-text tracking-widest">
+            ✦
+          </span>
+          <FaShip className="start-ship scale-x-[-1]" />
+          <span className="font-cinzel start-footer-text tracking-widest">
+            ✦
+          </span>
+          <FaShip className="start-ship scale-x-[-1]" />
+          <span className="font-cinzel start-footer-text tracking-widest">
+            ✦
+          </span>
+          <FaShip className="start-ship scale-x-[-1]" />
+          <span className="font-cinzel start-footer-text tracking-widest">
+            ✦
+          </span>
+          <FaShip className="start-ship scale-x-[-1]" />
         </div>
       </div>
 
