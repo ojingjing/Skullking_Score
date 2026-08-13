@@ -105,7 +105,7 @@ export default function Start() {
           <FaShip className="start-ship" />
 
           <span className="font-cinzel start-footer-text tracking-widest">
-            ✦ ☠ SAIL THE SEAS ☠ ✦
+            ✦ • SAIL THE SEAS • ✦
           </span>
 
           <FaShip className="start-ship scale-x-[-1]" />
