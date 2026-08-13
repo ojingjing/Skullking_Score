@@ -140,13 +140,13 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-texture px-5 py-5 text-[#e8d5a8]">
+    <div className="h-full flex flex-col bg-texture px-4 overflow-hidden text-[#e8d5a8]">
       {/* Header */}
       <div className="text-center pt-2">
         <div className="rope-divider w-90 mx-auto mb-3"></div>
 
         <h1 className="diphylleia-regular text-3xl pirate-title-bo">
-          ✦ BONUS ✦
+          💎 BONUS 💎
         </h1>
 
         <div className="flex justify-center items-center">

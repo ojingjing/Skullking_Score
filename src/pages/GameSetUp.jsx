@@ -63,7 +63,7 @@ export default function GameSetup({ players, setPlayers }) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-texture px-5 py-8 text-[#e8d5a8]">
+    <div className="h-full flex flex-col bg-texture px-4 overflow-hidden text-[#e8d5a8]">
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-8 pb-3">
         <div className="w-8"></div>

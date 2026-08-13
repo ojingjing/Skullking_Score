@@ -29,7 +29,41 @@
 /* =========================
    Reset
 ========================= */
+/* =========================
+   Mobile 기본 설정
+========================= */
 
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+input {
+  min-width: 0;
+}
+
+/* 모바일에서 가로 넘침 방지 */
+img {
+  max-width: 100%;
+  height: auto;
+}
 html,
 body,
 #root {
@@ -908,4 +942,113 @@ body {
 .rank-normal {
   color: #a89070;
   border-color: rgba(168, 144, 112, 0.5);
+}
+
+/* =========================================================
+   📱 MOBILE ONLY
+   PC 화면은 기존 디자인 그대로 유지
+========================================================= */
+
+@media (max-width: 640px) {
+  /* 화면 가로 넘침 방지 */
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* 기본 글자 크기는 건드리지 않음 */
+  body {
+    min-width: 0;
+  }
+
+  /* 입력창이 화면 밖으로 밀려나지 않게 */
+  .player-row {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .name-input {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* 숫자 버튼만 살짝 축소 */
+  .number-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .number-btn-sm {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* 보너스 아이콘 */
+  .bonus-badge {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  /* 플레이어 입력 줄 */
+  .player-row {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .player-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .player-avatar-lose {
+    width: 30px;
+    height: 30px;
+  }
+
+  .player-divider {
+    height: 24px;
+  }
+
+  .player-num {
+    width: 18px;
+    font-size: 14px;
+  }
+
+  .name-input {
+    font-size: 14px;
+  }
+
+  /* 카드 내부 여백 */
+  .card-frame {
+    max-width: 100%;
+  }
+
+  /* 긴 텍스트 때문에 가로로 밀리는 것 방지 */
+  button,
+  p,
+  h1,
+  h2,
+  h3,
+  span {
+    max-width: 100%;
+  }
+
+  /* 테이블은 내용이 많을 때만 가로 스크롤 */
+  table {
+    min-width: 0;
+  }
+
+  /* 긴 이름도 화면 밖으로 나가지 않게 */
+  td,
+  th {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

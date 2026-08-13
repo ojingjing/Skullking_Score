@@ -58,7 +58,7 @@ export default function FinalResult({ players, setPlayers, setRound }) {
   }
 
   return (
-    <div className="min-h-screen bg-texture px-5 py-8 text-[#e8d5a8]">
+    <div className="h-full flex flex-col bg-texture px-4 overflow-hidden text-[#e8d5a8]">
       {/* Header */}
       <div className="text-center mb-6">
         <h1 className="diphylleia-regular text-3xl font-bold pirate-title">

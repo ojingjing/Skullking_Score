@@ -61,13 +61,13 @@ export default function Result({
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-texture px-5 py-8 text-[#e8d5a8]">
+    <div className="h-full flex flex-col bg-texture px-4 overflow-hidden text-[#e8d5a8]">
       {/* Header */}
       <div className="pt-8 pb-4 px-5 text-center">
         <div className="rope-divider w-90 mx-auto mb-3"></div>
 
         <h1 className="diphylleia-regular text-3xl font-bold pirate-title-bo">
-          🯀 ROUND {round} 🯀
+          ⚔️ ROUND {round} ⚔️
         </h1>
 
         <p className="text-[#a89070] text-sm mt-2">라운드 결과 🚩</p>

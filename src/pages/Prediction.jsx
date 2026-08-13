@@ -27,7 +27,7 @@ export default function Prediction({ players, setPlayers, round }) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-texture px-5 py-8 text-[#e8d5a8]">
+    <div className="h-full flex flex-col bg-texture px-4 overflow-hidden text-[#e8d5a8]">
       {/* Header */}
       <div className="flex items-center px-5 pt-8">
         <button onClick={() => navigate(-1)} className="text-[#a89070] w-8">
@@ -36,7 +36,7 @@ export default function Prediction({ players, setPlayers, round }) {
 
         <div className="flex-1 text-center">
           <h1 className="diphylleia-regular text-2xl font-bold pirate-title">
-            🯀 ROUND {round} 🯀
+            ⚔️ ROUND {round} ⚔️
           </h1>
         </div>
 

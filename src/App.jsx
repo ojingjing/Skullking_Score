@@ -31,8 +31,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-texture text-white">
-        <div className="mx-auto min-h-screen w-full max-w-md">
+      <div className="w-full h-[100dvh] bg-texture text-white overflow-hidden">
+        <div className="mx-auto w-full max-w-md h-full">
           <Routes>
             <Route path="/" element={<Navigate to="/start" replace />} />
 
