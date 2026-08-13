@@ -22,7 +22,7 @@ function App() {
       return JSON.parse(savedPlayers);
     }
 
-    return Array.from({ length: 4 }, createPlayer);
+    return Array.from({ length: 2 }, createPlayer);
   });
 
   useEffect(() => {
@@ -31,8 +31,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="w-full h-[100dvh] bg-texture text-white overflow-hidden">
-        <div className="mx-auto w-full max-w-md h-full">
+      <div className="min-h-[100dvh] w-full bg-texture text-white">
+        <div className="mx-auto w-full max-w-md">
           <Routes>
             <Route path="/" element={<Navigate to="/start" replace />} />
 

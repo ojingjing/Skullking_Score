@@ -13,33 +13,77 @@ import { calculateBonusScore, INITIAL_BONUS_DATA } from "../utils/score";
 
 function BonusCounter({ icon, title, point, value, setValue, className }) {
   return (
-    <div className={`card-frame rounded-xl p-7 ${className}`}>
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-3">
-          <div className={`bonus-badge ${className}-badge`}>{icon}</div>
+    <div
+      className={`
+        card-frame
+        rounded-xl
+        p-3
+        sm:p-5
+        ${className}
+      `}
+    >
+      <div className="flex items-center justify-between gap-2">
+        {/* Left */}
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+          <div
+            className={`
+              bonus-badge
+              ${className}-badge
+              shrink-0
+              w-9 h-9
+              sm:w-11 sm:h-11
+            `}
+          >
+            {icon}
+          </div>
 
-          <div>
-            <h2 className="font-bold text-[#ba9d26] drop-shadow-md">{title}</h2>
+          <div className="min-w-0">
+            <h2 className="text-sm sm:text-base font-bold text-[#ba9d26] drop-shadow-md truncate">
+              {title}
+            </h2>
 
-            <p className="text-sm text-[#b0921a]">{point}</p>
+            <p className="text-xs sm:text-sm text-[#b0921a]">{point}</p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        {/* Counter */}
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           <button
             onClick={() => setValue(Math.max(0, value - 1))}
-            className="number-btn number-btn-sm"
+            className="
+              number-btn
+              number-btn-sm
+              w-8 h-8
+              sm:w-10 sm:h-10
+              shrink-0
+            "
           >
             −
           </button>
 
-          <span className="font-cinzel text-2xl text-[#f0c060] w-8 text-center">
+          <span
+            className="
+              font-cinzel
+              text-xl
+              sm:text-2xl
+              w-6
+              sm:w-8
+              text-center
+              text-[#f0c060]
+            "
+          >
             {value}
           </span>
 
           <button
             onClick={() => setValue(value + 1)}
-            className="number-btn number-btn-sm"
+            className="
+              number-btn
+              number-btn-sm
+              w-8 h-8
+              sm:w-10 sm:h-10
+              shrink-0
+            "
           >
             +
           </button>
@@ -51,28 +95,53 @@ function BonusCounter({ icon, title, point, value, setValue, className }) {
 
 function ToggleCard({ icon, title, point, active, onClick, className }) {
   return (
-    <div className={`card-frame rounded-xl p-7 ${className}`}>
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-3">
-          <div className={`bonus-badge ${className}-badge`}>{icon}</div>
+    <div
+      className={`
+        card-frame
+        rounded-xl
+        p-3
+        sm:p-5
+        ${className}
+      `}
+    >
+      <div className="flex items-center justify-between gap-2">
+        {/* Left */}
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+          <div
+            className={`
+              bonus-badge
+              ${className}-badge
+              shrink-0
+              w-9 h-9
+              sm:w-11 sm:h-11
+            `}
+          >
+            {icon}
+          </div>
 
-          <div>
-            <h2 className="text-base font-bold text-[#ba9d26] drop-shadow-md">
+          <div className="min-w-0">
+            <h2 className="text-sm sm:text-base font-bold text-[#ba9d26] drop-shadow-md truncate">
               {title}
             </h2>
 
-            <p className="text-sm text-[#b0921a]">{point}</p>
+            <p className="text-xs sm:text-sm text-[#b0921a]">{point}</p>
           </div>
         </div>
 
+        {/* Toggle */}
         <button
           onClick={onClick}
           className={`
-            px-4
+            px-3
             py-2
+            sm:px-4
             rounded-xl
             transition-all
             border
+            text-xs
+            sm:text-sm
+            whitespace-nowrap
+            shrink-0
             ${
               active
                 ? "border-[#b49216] bg-[#eac327ae] text-[#1a1208]"
@@ -140,26 +209,57 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
   }
 
   return (
-    <div className="h-full flex flex-col bg-texture px-4 overflow-hidden text-[#e8d5a8]">
+    <div
+      className="
+        game-page
+        min-h-[100dvh]
+        flex
+        flex-col
+        bg-texture
+        px-3
+        sm:px-4
+        text-[#e8d5a8]
+      "
+    >
       {/* Header */}
-      <div className="text-center pt-2">
-        <div className="rope-divider w-90 mx-auto mb-3"></div>
+      <div className="text-center pt-2 sm:pt-4 shrink-0">
+        <div className="rope-divider w-full max-w-[360px] mx-auto mb-3"></div>
 
-        <h1 className="diphylleia-regular text-3xl pirate-title-bo">
+        <h1
+          className="
+            diphylleia-regular
+            text-2xl
+            sm:text-3xl
+            pirate-title-bo
+          "
+        >
           💎 BONUS 💎
         </h1>
 
-        <div className="flex justify-center items-center">
-          <p className="mt-1 text-sm pirate-title-bo mr-1">{player.name}님</p>
+        <div className="flex justify-center items-center gap-1 mt-1">
+          <p className="text-sm pirate-title-bo">{player.name}님</p>
 
-          <p className="text-[#8f7b58] mt-1 text-sm">의 보너스 점수</p>
+          <p className="text-[#8f7b58] text-xs sm:text-sm">의 보너스 점수</p>
         </div>
 
-        <div className="rope-divider w-90 mx-auto mt-3"></div>
+        <div className="rope-divider w-full max-w-[360px] mx-auto mt-3"></div>
       </div>
 
       {/* Bonus List */}
-      <div className="flex-1 mt-4 space-y-3">
+      <div
+        className="
+    flex-1
+    min-h-0
+    mt-3
+    sm:mt-4
+    space-y-2
+    sm:space-y-3
+    overflow-y-auto
+    px-2
+    sm:px-5
+    pb-2
+  "
+      >
         <BonusCounter
           className="bg-card-gold"
           icon={<GiCardRandom />}
@@ -206,20 +306,52 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
         />
 
         {/* Total Bonus */}
-        <div className="card-frame rounded-xl p-3 text-center">
-          <p className="text-[#8f7b58] text-sm">획득 보너스</p>
+        <div className="card-frame rounded-xl p-3 sm:p-4 text-center">
+          <p className="text-[#8f7b58] text-xs sm:text-sm">획득 보너스</p>
 
-          <p className="font-cinzel text-4xl pirate-title-bo mt-2 font-bold">
+          <p
+            className="
+              font-cinzel
+              text-3xl
+              sm:text-4xl
+              pirate-title-bo
+              mt-1
+              sm:mt-2
+              font-bold
+            "
+          >
             +{bonusScore}점
           </p>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="pt-4 pb-3 space-y-3">
+      <div
+        className="
+    page-footer
+    shrink-0
+    px-2
+    sm:px-5
+    pt-3
+    sm:pt-4
+    pb-2
+    sm:pb-6
+    space-y-2
+    sm:space-y-3
+  "
+      >
         <button
           onClick={applyBonus}
-          className="w-full rounded-xl py-4 font-cinzel font-bold text-[#ffe819] btn-pirate-bo-2 pirate-btn"
+          className="
+            w-full
+            rounded-xl
+            py-4
+            font-cinzel
+            font-bold
+            text-[#ffe819]
+            btn-pirate-bo-2
+            pirate-btn
+          "
         >
           <FaAnchor className="inline mr-2" />
           보너스 획득하기
@@ -228,7 +360,16 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
 
         <button
           onClick={() => navigate("/result")}
-          className="w-full py-4 rounded-xl border border-[#6e5528] text-[#c9942a] hover:bg-[#c9942a]/10 transition"
+          className="
+            w-full
+            py-4
+            rounded-xl
+            border
+            border-[#6e5528]
+            text-[#c9942a]
+            hover:bg-[#c9942a]/10
+            transition
+          "
         >
           뒤로가기
         </button>
