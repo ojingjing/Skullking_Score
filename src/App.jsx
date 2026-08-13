@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import Start from "./pages/Start";
 import Result from "./pages/Result";
-import GameSetup from "./pages/GameSetup";
+import GameSetup from "./pages/GameSetUp";
 import Prediction from "./pages/Prediction";
 import RoundResult from "./pages/RoundResult";
 import Bonus from "./pages/Bonus";
