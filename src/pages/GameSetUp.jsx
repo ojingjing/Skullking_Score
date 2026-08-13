@@ -139,7 +139,7 @@ export default function GameSetup({ players, setPlayers }) {
       </div>
 
       {/* Player List */}
-      <div className="flex-1 mt-6 px-5 overflow-y-auto space-y-3">
+      <div className="flex-1 mt-6 px-5 space-y-3">
         {players.map((player, index) => (
           <div key={index} className="player-row">
             <div className="player-avatar">

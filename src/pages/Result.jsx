@@ -76,7 +76,7 @@ export default function Result({
       </div>
 
       {/* Players */}
-      <div className="flex-1 px-5 space-y-4 overflow-y-auto">
+      <div className="flex-1 px-5 space-y-4">
         {players.map((player, index) => {
           const roundScore =
             (player.currentRoundScore || 0) + (player.currentBonusScore || 0);
