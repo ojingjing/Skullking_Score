@@ -107,9 +107,9 @@ export default function RoundResult({ players, setPlayers, round }) {
             <div className="flex items-center gap-6">
               <button
                 onClick={() => changeSuccess(index, -1)}
-                className="number-btn-su number-btn-sm text-xl"
+                className="number-btn-su number-btn-sm pirate-title-su"
               >
-                ﹣
+                ➖
               </button>
 
               <span className="font-cinzel text-2xl w-8 text-center text-[rgb(73,167,255)]">
@@ -118,9 +118,9 @@ export default function RoundResult({ players, setPlayers, round }) {
 
               <button
                 onClick={() => changeSuccess(index, 1)}
-                className="number-btn-su number-btn-sm text-xl"
+                className="number-btn-su number-btn-sm pirate-title-su"
               >
-                +
+                ➕
               </button>
             </div>
           </div>

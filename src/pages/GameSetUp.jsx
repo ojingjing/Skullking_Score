@@ -83,7 +83,7 @@ export default function GameSetup({ players, setPlayers }) {
       {/* Title */}
       <div className="flex flex-col items-center px-6 gap-2">
         <h2 className="diphylleia-regular text-3xl font-bold pirate-title">
-          🯀 해적단 설정 🯀
+          🔸 해적단 설정 🔸
         </h2>
 
         <p className="text-xs text-[#c09244] pt-3">

@@ -950,105 +950,32 @@ body {
 ========================================================= */
 
 @media (max-width: 640px) {
-  /* 화면 가로 넘침 방지 */
   html,
   body,
   #root {
     width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+    min-height: 100%;
+    height: auto;
   }
 
-  /* 기본 글자 크기는 건드리지 않음 */
   body {
-    min-width: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
-  /* 입력창이 화면 밖으로 밀려나지 않게 */
+  /* 페이지 전체가 자연스럽게 세로로 늘어나도록 */
+  #root {
+    min-height: 100vh;
+  }
+
+  /* 입력창이 화면 밖으로 밀리지 않도록 */
   .player-row {
-    min-width: 0;
     width: 100%;
+    min-width: 0;
   }
 
   .name-input {
     min-width: 0;
     width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* 숫자 버튼만 살짝 축소 */
-  .number-btn {
-    width: 48px;
-    height: 48px;
-  }
-
-  .number-btn-sm {
-    width: 38px;
-    height: 38px;
-  }
-
-  /* 보너스 아이콘 */
-  .bonus-badge {
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-
-  /* 플레이어 입력 줄 */
-  .player-row {
-    gap: 8px;
-    padding: 10px 12px;
-  }
-
-  .player-avatar {
-    width: 30px;
-    height: 30px;
-  }
-
-  .player-avatar-lose {
-    width: 30px;
-    height: 30px;
-  }
-
-  .player-divider {
-    height: 24px;
-  }
-
-  .player-num {
-    width: 18px;
-    font-size: 14px;
-  }
-
-  .name-input {
-    font-size: 14px;
-  }
-
-  /* 카드 내부 여백 */
-  .card-frame {
-    max-width: 100%;
-  }
-
-  /* 긴 텍스트 때문에 가로로 밀리는 것 방지 */
-  button,
-  p,
-  h1,
-  h2,
-  h3,
-  span {
-    max-width: 100%;
-  }
-
-  /* 테이블은 내용이 많을 때만 가로 스크롤 */
-  table {
-    min-width: 0;
-  }
-
-  /* 긴 이름도 화면 밖으로 나가지 않게 */
-  td,
-  th {
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 }

@@ -77,9 +77,9 @@ export default function Prediction({ players, setPlayers, round }) {
               {/* 감소 */}
               <button
                 onClick={() => changePrediction(index, -1)}
-                className="number-btn-pr number-btn-sm"
+                className="number-btn-pr number-btn-sm pirate-title-pr "
               >
-                ﹣
+                ➖
               </button>
 
               {/* 숫자 */}
@@ -90,9 +90,9 @@ export default function Prediction({ players, setPlayers, round }) {
               {/* 증가 */}
               <button
                 onClick={() => changePrediction(index, 1)}
-                className="number-btn-pr number-btn-sm text-xl"
+                className="number-btn-pr number-btn-sm pirate-title-pr"
               >
-                +
+                ➕
               </button>
             </div>
           </div>
