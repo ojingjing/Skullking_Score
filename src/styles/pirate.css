@@ -1,0 +1,221 @@
+/* =========================
+   버튼
+========================= */
+
+/* =========================
+   로프
+========================= */
+
+.rope-divider {
+  height: 2px;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #7a5c2a 0,
+    #7a5c2a 8px,
+    #c9942a 8px,
+    #c9942a 12px,
+    #7a5c2a 12px,
+    #7a5c2a 20px
+  );
+
+  opacity: 0.6;
+}
+
+/* =========================
+   카드
+========================= */
+.card-frame {
+  position: relative;
+
+  border: 1px solid rgba(201, 148, 42, 0.25);
+
+  background: linear-gradient(
+    135deg,
+    rgba(26, 18, 8, 0.9),
+    rgba(13, 10, 7, 0.95)
+  );
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(201, 148, 42, 0.1);
+}
+
+.card-frame-pr {
+  position: relative;
+
+  border: 1px solid rgba(215, 63, 13, 0.25);
+
+  background: linear-gradient(
+    135deg,
+    rgba(27, 0, 0, 0.9),
+    rgba(13, 10, 7, 0.95)
+  );
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(201, 148, 42, 0.1);
+}
+
+/* =========================
+   카드 모서리
+========================= */
+
+.corner-deco {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(201, 148, 42, 0.4);
+  border-style: solid;
+}
+
+.corner-tl {
+  top: 8px;
+  left: 8px;
+  border-width: 2px 0 0 2px;
+}
+
+.corner-tr {
+  top: 8px;
+  right: 8px;
+  border-width: 2px 2px 0 0;
+}
+
+.corner-bl {
+  bottom: 8px;
+  left: 8px;
+  border-width: 0 0 2px 2px;
+}
+
+.corner-br {
+  bottom: 8px;
+  right: 8px;
+  border-width: 0 2px 2px 0;
+}
+
+/* =========================
+   해골
+========================= */
+
+.skull-decoration {
+  color: rgba(201, 148, 42, 0.25);
+  letter-spacing: 8px;
+}
+
+.skull-circle {
+  background: radial-gradient(
+    circle,
+    rgba(139, 26, 26, 0.3),
+    rgba(13, 10, 7, 0.8) 70%
+  );
+
+  border: 2px solid rgba(201, 148, 42, 0.35);
+
+  box-shadow:
+    0 0 30px rgba(139, 26, 26, 0.4),
+    0 0 60px rgba(201, 148, 42, 0.15);
+}
+
+.skull-icon {
+  color: #c9942a;
+  text-shadow: 0 0 20px rgba(201, 148, 42, 0.8);
+}
+
+.dashed-circle {
+  border: 1px dashed rgba(201, 148, 42, 0.2);
+}
+/* =========================
+   SKULL KING 금속 타이틀
+========================= */
+
+/* =========================
+   설명 카드 가죽 느낌
+========================= */
+
+.pirate-card {
+  /* 기존 작성하신 코드 */
+  background: linear-gradient(
+    135deg,
+    rgba(40, 25, 10, 0.85),
+    rgba(13, 10, 7, 0.95)
+  );
+  border: 1px solid rgba(201, 148, 42, 0.35);
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.5),
+    0 10px 30px rgba(0, 0, 0, 0.4);
+
+  border-radius: 12px; /* 모서리를 부드럽게 */
+  padding: 20px 24px; /* 여백을 주어 글자와 간격 확보 */
+  backdrop-filter: blur(4px); /* 뒷배경을 은은하게 블러 처리 */
+  position: relative; /* 브래킷(`┌ ┘`) 위치 잡기 편하게 설정 */
+}
+/* =========================
+   버튼 빛 이동 효과
+========================= */
+
+.pirate-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.pirate-btn::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 80%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+
+  transition: 0.5s;
+}
+
+.pirate-btn:hover::before {
+  left: 140%;
+}
+
+.pirate-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 25px rgba(240, 211, 22, 0.7),
+    0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.pirate-btn:active {
+  transform: scale(0.97);
+}
+
+.btn-pirate {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.95),
+    rgba(246, 169, 2, 0.85)
+  );
+
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 235, 170, 0.8);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(255, 200, 50, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  transition: all 0.25s ease;
+}
+
+.btn-pirate:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(255, 200, 50, 0.45);
+}

@@ -1,0 +1,911 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Sekuya&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Diphylleia&family=Sekuya&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shojumaru&display=swap");
+@import "tailwindcss";
+
+.shojumaru-regular {
+  font-family: "Shojumaru", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.sekuya-regular {
+  font-family: "Sekuya", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.sekuya-200 {
+  font-family: "Sekuya", system-ui;
+  font-weight: 200;
+  font-style: normal;
+}
+.diphylleia-regular {
+  font-family: "Diphylleia", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* =========================
+   Reset
+========================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  background: #0d0a07;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================
+   공통 배경
+========================= */
+
+.bg-texture {
+  background-color: #0d0a07;
+  background-image:
+    radial-gradient(ellipse at top, rgba(201, 148, 42, 0.12), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(139, 26, 26, 0.15), transparent 60%);
+}
+
+.stars-bg {
+  background-image:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.4) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 70% 20%,
+      rgba(255, 255, 255, 0.3) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 40% 60%,
+      rgba(255, 255, 255, 0.2) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(255, 255, 255, 0.3) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 15% 70%,
+      rgba(255, 255, 255, 0.2) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 60% 80%,
+      rgba(255, 255, 255, 0.2) 1px,
+      transparent 1px
+    );
+}
+
+/* =========================
+   공통 텍스트
+========================= */
+
+.title-glow {
+  text-shadow:
+    0 0 20px rgba(201, 148, 42, 0.6),
+    0 0 40px rgba(201, 148, 42, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.subtitle-glow {
+  text-shadow:
+    0 0 10px rgba(201, 148, 42, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* =========================
+   공통 애니메이션
+========================= */
+
+.wave-text {
+  animation: waveFade 3s ease-in-out infinite;
+}
+
+@keyframes waveFade {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.anchor-spin {
+  animation: anchorPulse 4s ease-in-out infinite;
+}
+
+@keyframes anchorPulse {
+  0%,
+  100% {
+    transform: rotate(-5deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(5deg) scale(1.05);
+  }
+}
+
+/* 공통 버튼 */
+.number-btn {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 14px;
+  border: 1px solid rgba(201, 148, 42, 0.35);
+  background: rgba(26, 18, 8, 0.35);
+  color: #c9942a;
+
+  transition: all 0.2s ease;
+}
+
+.number-btn:hover {
+  border-color: #c9942a;
+  box-shadow: 0 0 10px rgba(201, 148, 42, 0.25);
+  background: rgba(201, 148, 42, 0.06);
+}
+
+.number-btn:active {
+  transform: scale(0.95);
+  background: rgba(201, 148, 42, 0.12);
+}
+
+/* 공통 버튼-pr */
+.number-btn-pr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 14px;
+  border: 1px solid rgba(223, 15, 15, 0.35);
+  background: rgba(43, 2, 1, 0.638);
+  color: #f94e4e;
+
+  transition: all 0.2s ease;
+}
+
+.number-btn-pr:hover,
+.number-btn-su:hover {
+  border-color: #ff8b8b;
+  box-shadow: 0 0 10px rgba(240, 160, 113, 0.25);
+  /* background: rgba(201, 148, 42, 0.06); */
+}
+
+.number-btn-pr:active,
+.number-btn-su:hover {
+  transform: scale(0.95);
+  /* background: rgba(201, 148, 42, 0.12); */
+}
+/* 공통 버튼-pr */
+.number-btn-su {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 14px;
+  border: 1px solid rgba(27, 187, 211, 0.35);
+  background: rgba(1, 20, 52, 0.536);
+  color: rgb(73, 167, 255);
+
+  transition: all 0.2s ease;
+}
+.number-btn-su:hover,
+.number-btn-su:hover {
+  border-color: #7cd9f5;
+  box-shadow: 0 0 10px rgba(240, 160, 113, 0.25);
+  /* background: rgba(201, 148, 42, 0.06); */
+}
+
+.number-btn-su.anchor-spin:active,
+.number-btn-su:hover {
+  transform: scale(0.95);
+  /* background: rgba(201, 148, 42, 0.12); */
+}
+.card-frame {
+  position: relative;
+
+  border: 1px solid rgba(201, 148, 42, 0.25);
+
+  background: linear-gradient(
+    135deg,
+    rgba(26, 18, 8, 0.9),
+    rgba(13, 10, 7, 0.95)
+  );
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(201, 148, 42, 0.1);
+}
+.card-frame-su {
+  position: relative;
+
+  border: 1px solid rgba(53, 188, 215, 0.25);
+
+  background: linear-gradient(
+    135deg,
+    rgba(1, 12, 30, 0.9),
+    rgba(2, 1, 26, 0.974)
+  );
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(201, 148, 42, 0.1);
+}
+
+.player-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 12px 14px;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(201, 148, 42, 0.2);
+
+  background: linear-gradient(
+    135deg,
+    rgba(26, 18, 8, 0.8),
+    rgba(13, 10, 7, 0.92)
+  );
+
+  transition: all 0.2s;
+}
+.number-btn-sm {
+  width: 42px;
+  height: 42px;
+  /* background-color: #362201; */
+}
+
+.player-row:focus-within {
+  border-color: rgba(201, 148, 42, 0.55);
+
+  box-shadow: 0 0 15px rgba(201, 148, 42, 0.15);
+}
+.player-avatar {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+
+  color: #fcfcfc;
+
+  background: linear-gradient(
+    135deg,
+    #fff1b0 0%,
+    #ffd700 25%,
+    #f0c060 45%,
+    #c9942a 70%,
+    #7a4f10 100%
+  );
+  box-shadow:
+    0 0 15px rgba(255, 215, 0, 0.5),
+    0 0 35px rgba(240, 192, 96, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 8px rgba(80, 40, 0, 0.5);
+
+  /* border: 1px solid rgba(255, 215, 0, 0.7); */
+  border: 1px solid rgba(214, 3, 3, 0.25);
+}
+.player-avatar-lose {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+
+  color: #fff1f1;
+
+  background: linear-gradient(
+    135deg,
+    #f09c8b 0%,
+    #ef4b2a 25%,
+    #c91d1d 45%,
+    #a40a0a 70%,
+    #7a1210 100%
+  );
+  box-shadow:
+    0 0 15px rgba(255, 64, 0, 0.644),
+    0 0 35px rgba(240, 125, 96, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 8px rgba(80, 40, 0, 0.5);
+
+  /* border: 1px solid rgba(255, 215, 0, 0.7); */
+  border: 1px solid rgba(214, 3, 3, 0.25);
+}
+.player-divider {
+  width: 1px;
+  height: 28px;
+
+  background: rgba(201, 148, 42, 0.18);
+}
+.player-num {
+  width: 20px;
+
+  font-family: "Cinzel", serif;
+
+  text-align: center;
+
+  color: rgba(201, 148, 42, 0.7);
+
+  font-weight: 700;
+
+  font-size: 16px;
+
+  flex-shrink: 0;
+}
+.name-input {
+  flex: 1;
+
+  background: transparent;
+
+  border: none;
+
+  outline: none;
+
+  color: #e8d5a8;
+
+  font-size: 15px;
+
+  font-family: "Noto Sans KR", sans-serif;
+
+  caret-color: #c9942a;
+}
+.name-input::placeholder {
+  color: rgba(168, 144, 112, 0.35);
+}
+.name-input:focus {
+  outline: none;
+}
+.preview-card {
+  border: 1px solid rgba(201, 148, 42, 0.2);
+
+  background: linear-gradient(
+    135deg,
+    rgba(26, 18, 8, 0.7),
+    rgba(13, 10, 7, 0.9)
+  );
+}
+
+.pirate-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.pirate-btn::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 80%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+
+  transition: 0.5s;
+}
+
+.pirate-btn:hover::before {
+  left: 140%;
+}
+
+.pirate-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 25px rgba(240, 211, 22, 0.7),
+    0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.pirate-btn:active {
+  transform: scale(0.97);
+}
+
+.btn-pirate {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.95),
+    rgba(246, 169, 2, 0.85)
+  );
+
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 235, 170, 0.8);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(255, 200, 50, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  transition: all 0.25s ease;
+}
+.btn-pirate-pr {
+  background: linear-gradient(
+    135deg,
+    rgba(120, 35, 1, 0.95),
+    rgba(197, 5, 5, 0.85)
+  );
+
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 194, 170, 0.8);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(255, 115, 50, 0.281),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  transition: all 0.25s ease;
+}
+.btn-pirate-su {
+  background: linear-gradient(
+    135deg,
+    rgba(14, 14, 255, 0.95),
+    rgba(255, 17, 17, 0.85)
+  );
+
+  backdrop-filter: blur(8px);
+  /* border: 1px solid rgba(123, 58, 148, 0.8); */
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(147, 94, 234, 0.281),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  transition: all 0.25s ease;
+}
+
+.btn-pirate-bo {
+  backdrop-filter: blur(8px);
+  border: 1px solid #a4289e90;
+
+  /* box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(255, 200, 50, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6); */
+
+  transition: all 0.25s ease;
+}
+
+.btn-pirate-bo-2 {
+  background: linear-gradient(
+    135deg,
+    rgba(249, 131, 255, 0.95),
+    rgba(222, 10, 250, 0.85)
+  );
+
+  backdrop-filter: blur(8px);
+  /* border: 1px solid rgba(123, 58, 148, 0.8); */
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(147, 94, 234, 0.281),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  transition: all 0.25s ease;
+}
+
+.btn-pirate:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(255, 200, 50, 0.45);
+}
+.btn-pirate-su:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(255, 200, 50, 0.082);
+}
+.btn-pirate-bo-2:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(255, 200, 50, 0.082);
+}
+.btn-pirate-bo:hover {
+  transform: scale(1.02);
+  color: #2b002b;
+  background: linear-gradient(135deg, rgb(215, 72, 255), rgb(244, 44, 255));
+  border: 1px solid rgba(92, 7, 125, 0.959);
+}
+.pirate-title {
+  background: linear-gradient(
+    180deg,
+    #ffffff 10%,
+    #fff3a1 20%,
+    #ffd700 50%,
+    #fca119 80%,
+    #e07b00 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* 칙칙한 브라운 그림자 대신 어두운 외곽선 + 네온 느낌의 골드 글로우 */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
+}
+.pirate-title-bo {
+  background: linear-gradient(
+    180deg,
+    #edceff 10%,
+    #ffaaf5 20%,
+    #ff27ff 50%,
+    #c908c9 80%,
+    #6c0475 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* 칙칙한 브라운 그림자 대신 어두운 외곽선 + 네온 느낌의 골드 글로우 */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 0 12px rgba(228, 19, 255, 0.6));
+}
+
+.pirate-title-pr {
+  background: linear-gradient(
+    180deg,
+    #f29999 10%,
+    #c83434 20%,
+    #d62222 50%,
+    #f76b3d 80%,
+    #742102 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* 칙칙한 브라운 그림자 대신 어두운 외곽선 + 네온 느낌의 골드 글로우 */
+  filter: drop-shadow(0 4px 6px rgba(64, 0, 0, 0.8))
+    drop-shadow(0 0 12px rgba(231, 53, 44, 0.6));
+}
+.pirate-title-su {
+  background: linear-gradient(
+    180deg,
+    #a0c8fc 10%,
+    #53c8ff 20%,
+    #56a8ff 50%,
+    #2d56fa 80%,
+    #0e0473 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* 칙칙한 브라운 그림자 대신 어두운 외곽선 + 네온 느낌의 골드 글로우 */
+  filter: drop-shadow(0 4px 6px rgba(0, 12, 64, 0.8))
+    drop-shadow(0 0 12px rgba(85, 149, 238, 0.6));
+}
+.gold-metal-bg {
+  background: linear-gradient(
+    135deg,
+    #fff1b0 0%,
+    #ffd700 25%,
+    #f0c060 45%,
+    #c9942a 70%,
+    #7a4f10 100%
+  );
+
+  box-shadow:
+    0 0 15px rgba(255, 215, 0, 0.5),
+    0 0 35px rgba(240, 192, 96, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 8px rgba(80, 40, 0, 0.5);
+
+  border: 1px solid rgba(255, 215, 0, 0.7);
+}
+
+.bg-gold-treasure {
+  position: relative; /* 1. 자식의 기준점이 됨 */
+  z-index: 0; /* 4. 내부 글자들이 이미지보다 위에 오도록 설정 */
+}
+
+.bg-gold-treasure::after {
+  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
+  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
+
+  /* 작성하신 코드 */
+  background-image: url("/src/images/gold2.jpg");
+  background-size: 130%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+}
+
+.bg-gold-lose {
+  position: relative; /* 1. 자식의 기준점이 됨 */
+  z-index: 0; /* 4. 내부 글자들이 이미지보다 위에 오도록 설정 */
+}
+
+.bg-gold-lose::after {
+  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
+  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
+
+  /* 작성하신 코드 */
+  background-image: url("/src/images/lose.jpg");
+  background-size: 120%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+}
+
+.bg-card,
+.bg-card-gold,
+.bg-mermaid,
+.bg-pirate,
+.bg-skull {
+  position: relative; /* 1. 자식의 기준점이 됨 */
+  z-index: 0; /* 4. 내부 글자들이 이미지보다 위에 오도록 설정 */
+}
+
+.bg-card::after {
+  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
+  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
+
+  /* 작성하신 코드 */
+  background-image: url("/src/images/black.jpg");
+  background-size: 100%;
+
+  background-position: center 47%;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+}
+
+.bg-card-gold::after {
+  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
+  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
+
+  /* 작성하신 코드 */
+  background-image: url("/src/images/card2.jpg");
+  background-size: 100%;
+
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+}
+
+.bg-mermaid::after {
+  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
+  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
+
+  /* 작성하신 코드 */
+  background-image: url("/src/images/mermaid4.jpg");
+  background-size: 100%;
+
+  background-position: center 40%;
+
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+
+.bg-pirate::after {
+  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
+  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
+
+  /* 작성하신 코드 */
+  background-image: url("/src/images/pirate5.png");
+  background-size: 100%;
+
+  background-position: center 15%;
+
+  background-repeat: no-repeat;
+  opacity: 0.3;
+}
+
+.bg-skull::after {
+  content: ""; /* 2. 필수: 빈 콘텐츠 지정 */
+  position: absolute; /* 3. 부모 크기에 맞추기 위해 절대 위치 설정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 4. 이미지를 글자 뒤로 보냄 */
+
+  /* 작성하신 코드 */
+  background-image: url("/src/images/skull2.jpg");
+  background-size: 100%;
+
+  background-position: center 25%;
+
+  background-repeat: no-repeat;
+  opacity: 0.4;
+}
+/* 뱃지 */
+.bonus-badge {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 20px;
+
+  border: 1px solid;
+  /* box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.4),
+    inset 0 0 10px rgba(255, 255, 255, 0.3); */
+}
+.bg-card-gold-badge {
+  background: linear-gradient(145deg, #fff01d, #85ff2e 30%, #ba26ff);
+
+  border-color: hsl(73, 28%, 81%);
+
+  color: #ffffff;
+}
+.bg-card-badge {
+  background: linear-gradient(145deg, #242323, #000000);
+
+  border-color: #4c4848;
+
+  color: #ffffff;
+}
+.bg-pirate-badge {
+  background: linear-gradient(145deg, #f20404, #520000);
+
+  border-color: #b14f4f;
+
+  color: #ffffff;
+}
+.bg-mermaid-badge {
+  background: linear-gradient(145deg, #17ffd8, #02564d);
+
+  border-color: hsl(170, 45%, 59%);
+
+  color: #ffffff;
+}
+.bg-skull-badge {
+  background: linear-gradient(145deg, #ffc524, #ff4800);
+
+  border-color: #3c1903;
+
+  color: #ffffff;
+}
+
+.winner-card {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+
+  /* border: 1px solid rgba(201, 148, 42, 0.35); */
+}
+
+.winner-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/src/images/winner.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+
+  z-index: -1;
+}
+/* 🪙 해적 동전 메달 공통 */
+/* 순위 숫자 공통 */
+.rank-medal {
+  width: 35px;
+  /* height: 35px; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Cinzel", serif;
+  font-size: 18px;
+  font-weight: 900;
+
+  border-radius: 50%;
+  border: 2px solid;
+
+  background: transparent;
+}
+
+/* 🥇 1등 */
+.rank-gold {
+  color: #ffd700;
+  border-color: #ffd700;
+
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+/* 🥈 2등 */
+.rank-silver {
+  color: #dcdcdc;
+  border-color: #dcdcdc;
+
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* 🥉 3등 */
+.rank-bronze {
+  color: #cd7f32;
+  border-color: #cd7f32;
+
+  text-shadow: 0 0 8px rgba(205, 127, 50, 0.5);
+}
+
+/* 4등 이후 */
+.rank-normal {
+  color: #a89070;
+  border-color: rgba(168, 144, 112, 0.5);
+}
