@@ -29,41 +29,7 @@
 /* =========================
    Reset
 ========================= */
-/* =========================
-   Mobile 기본 설정
-========================= */
 
-html,
-body,
-#root {
-  width: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-button,
-input {
-  font: inherit;
-}
-
-input {
-  min-width: 0;
-}
-
-/* 모바일에서 가로 넘침 방지 */
-img {
-  max-width: 100%;
-  height: auto;
-}
 html,
 body,
 #root {
