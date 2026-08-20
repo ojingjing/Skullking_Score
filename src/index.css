@@ -835,7 +835,9 @@ span {
 .bg-card-gold,
 .bg-mermaid,
 .bg-pirate,
-.bg-skull {
+.bg-skull,
+.bg-gambling,
+.bg-fight {
   position: relative;
   z-index: 0;
 }
@@ -846,7 +848,9 @@ span {
 .bg-card-gold::after,
 .bg-mermaid::after,
 .bg-pirate::after,
-.bg-skull::after {
+.bg-skull::after,
+.bg-gambling::after,
+.bg-fight::after {
   content: "";
 
   position: absolute;
@@ -905,6 +909,18 @@ span {
   background-position: center 25%;
   opacity: 0.4;
 }
+.bg-fight::after {
+  background-image: url("/src/images/coin.jpg");
+  background-size: 100%;
+  background-position: center 25%;
+  opacity: 0.4;
+}
+.bg-gambling::after {
+  background-image: url("/src/images/gambling.jpg");
+  background-size: 100%;
+  background-position: center 25%;
+  opacity: 0.4;
+}
 
 /* =========================================================
    BONUS BADGE
@@ -933,7 +949,8 @@ span {
   color: #ffffff;
 }
 
-.bg-card-badge {
+.bg-card-badge,
+.bg-gambling-badge {
   background: linear-gradient(145deg, #242323, #000000);
 
   border-color: #4c4848;
@@ -965,6 +982,13 @@ span {
   color: #ffffff;
 }
 
+.bg-fight-badge {
+  background: linear-gradient(145deg, #eee019, #d6d31c);
+
+  border-color: #f4ff53;
+
+  color: #ffffff;
+}
 /* =========================================================
    WINNER CARD
 ========================================================= */

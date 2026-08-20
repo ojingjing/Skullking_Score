@@ -4,6 +4,10 @@ export const INITIAL_BONUS_DATA = {
   pirateCatchMermaid: 0,
   skullKingCatchPirate: 0,
   mermaidCatchSkullKing: false,
+
+  // 추가
+  plunder: false,
+  roatanRascal: 0,
 };
 
 export function calculateRoundScore(round, prediction, success) {
@@ -26,7 +30,16 @@ export function calculateBonusScore(bonusData) {
     (bonusData.black14 ? 20 : 0) +
     bonusData.pirateCatchMermaid * 20 +
     bonusData.skullKingCatchPirate * 30 +
-    (bonusData.mermaidCatchSkullKing ? 40 : 0)
+    (bonusData.mermaidCatchSkullKing ? 40 : 0) +
+    // 약탈 +20점
+    (bonusData.plunder ? 20 : 0) +
+    // 로아탄의 라스칼
+    // -2 = -20점
+    // -1 = -10점
+    //  0 = 0점
+    //  1 = +10점
+    //  2 = +20점
+    bonusData.roatanRascal * 10
   );
 }
 
@@ -34,13 +47,9 @@ export const createPlayer = () => ({
   name: "",
   prediction: 0,
   success: 0,
-
   totalScore: 0,
-
   currentRoundScore: 0,
   currentBonusScore: 0,
-
   bonusData: { ...INITIAL_BONUS_DATA },
-
   roundScores: [],
 });

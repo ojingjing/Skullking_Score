@@ -7,11 +7,22 @@ import {
   GiPirateHat,
   GiCardJackSpades,
   GiCardRandom,
+  GiTreasureMap,
 } from "react-icons/gi";
-
+import { IoDiceOutline } from "react-icons/io5";
+import { BiCoin } from "react-icons/bi";
 import { calculateBonusScore, INITIAL_BONUS_DATA } from "../utils/score";
 
-function BonusCounter({ icon, title, point, value, setValue, className }) {
+function BonusCounter({
+  icon,
+  title,
+  point,
+  value,
+  setValue,
+  className,
+  min = 0,
+  max = Infinity,
+}) {
   return (
     <div
       className={`
@@ -49,7 +60,7 @@ function BonusCounter({ icon, title, point, value, setValue, className }) {
         {/* Counter */}
         <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           <button
-            onClick={() => setValue(Math.max(0, value - 1))}
+            onClick={() => setValue(Math.max(min, value - 1))}
             className="
               number-btn
               number-btn-sm
@@ -76,7 +87,7 @@ function BonusCounter({ icon, title, point, value, setValue, className }) {
           </span>
 
           <button
-            onClick={() => setValue(value + 1)}
+            onClick={() => setValue(Math.min(max, value + 1))}
             className="
               number-btn
               number-btn-sm
@@ -167,23 +178,38 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
     return null;
   }
 
-  const bonus = player.bonusData ?? INITIAL_BONUS_DATA;
+  // 기존 저장 데이터 + 새로운 보너스 데이터 병합
+  const bonus = {
+    ...INITIAL_BONUS_DATA,
+    ...(player.bonusData ?? {}),
+  };
 
-  const [coloredCard, setColoredCard] = useState(bonus.coloredCard);
+  const [coloredCard, setColoredCard] = useState(bonus.coloredCard ?? 0);
 
-  const [black14, setBlack14] = useState(bonus.black14);
+  const [black14, setBlack14] = useState(bonus.black14 ?? false);
 
   const [pirateCatchMermaid, setPirateCatchMermaid] = useState(
-    bonus.pirateCatchMermaid,
+    bonus.pirateCatchMermaid ?? 0,
   );
 
   const [skullKingCatchPirate, setSkullKingCatchPirate] = useState(
-    bonus.skullKingCatchPirate,
+    bonus.skullKingCatchPirate ?? 0,
   );
 
   const [mermaidCatchSkullKing, setMermaidCatchSkullKing] = useState(
-    bonus.mermaidCatchSkullKing,
+    bonus.mermaidCatchSkullKing ?? false,
   );
+
+  // 약탈 +20
+  const [plunder, setPlunder] = useState(bonus.plunder ?? false);
+
+  // 로아탄의 라스칼
+  // -2 = -20점
+  // -1 = -10점
+  //  0 = 0점
+  //  1 = +10점
+  //  2 = +20점
+  const [roatanRascal, setRoatanRascal] = useState(bonus.roatanRascal ?? 0);
 
   const bonusData = {
     coloredCard,
@@ -191,6 +217,8 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
     pirateCatchMermaid,
     skullKingCatchPirate,
     mermaidCatchSkullKing,
+    plunder,
+    roatanRascal,
   };
 
   const bonusScore = calculateBonusScore(bonusData);
@@ -248,18 +276,19 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
       {/* Bonus List */}
       <div
         className="
-    flex-1
-    min-h-0
-    mt-3
-    sm:mt-4
-    space-y-2
-    sm:space-y-3
-    overflow-y-auto
-    px-2
-    sm:px-5
-    pb-2
-  "
+          flex-1
+          min-h-0
+          mt-3
+          sm:mt-4
+          space-y-2
+          sm:space-y-3
+          overflow-y-auto
+          px-2
+          sm:px-5
+          pb-2
+        "
       >
+        {/* 색깔 카드 */}
         <BonusCounter
           className="bg-card-gold"
           icon={<GiCardRandom />}
@@ -269,6 +298,7 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
           setValue={setColoredCard}
         />
 
+        {/* 검은색 카드 */}
         <ToggleCard
           className="bg-card"
           icon={<GiCardJackSpades />}
@@ -278,6 +308,7 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
           onClick={() => setBlack14(!black14)}
         />
 
+        {/* 해적 → 인어 */}
         <BonusCounter
           className="bg-pirate"
           icon={<GiPirateHat />}
@@ -287,6 +318,7 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
           setValue={setPirateCatchMermaid}
         />
 
+        {/* 인어 → 스컬킹 */}
         <ToggleCard
           className="bg-mermaid"
           icon={<GiMermaid />}
@@ -296,6 +328,7 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
           onClick={() => setMermaidCatchSkullKing(!mermaidCatchSkullKing)}
         />
 
+        {/* 스컬킹 → 해적 */}
         <BonusCounter
           className="bg-skull"
           icon={<GiPirateSkull />}
@@ -303,6 +336,28 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
           point="+30점"
           value={skullKingCatchPirate}
           setValue={setSkullKingCatchPirate}
+        />
+
+        {/* 약탈 */}
+        <ToggleCard
+          className="bg-fight"
+          icon={<BiCoin />}
+          title="약탈"
+          point="+20점"
+          active={plunder}
+          onClick={() => setPlunder(!plunder)}
+        />
+
+        {/* 로아탄의 라스칼 */}
+        <BonusCounter
+          className="bg-gambling"
+          icon={<IoDiceOutline />}
+          title="로아탄의 라스칼"
+          // point="-20 ~ +20점"
+          value={roatanRascal}
+          setValue={setRoatanRascal}
+          min={-2}
+          max={2}
         />
 
         {/* Total Bonus */}
@@ -320,7 +375,8 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
               font-bold
             "
           >
-            +{bonusScore}점
+            {bonusScore >= 0 ? "+" : ""}
+            {bonusScore}점
           </p>
         </div>
       </div>
@@ -328,17 +384,17 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
       {/* Footer */}
       <div
         className="
-    page-footer
-    shrink-0
-    px-2
-    sm:px-5
-    pt-3
-    sm:pt-4
-    pb-2
-    sm:pb-6
-    space-y-2
-    sm:space-y-3
-  "
+          page-footer
+          shrink-0
+          px-2
+          sm:px-5
+          pt-3
+          sm:pt-4
+          pb-2
+          sm:pb-6
+          space-y-2
+          sm:space-y-3
+        "
       >
         <button
           onClick={applyBonus}
