@@ -339,17 +339,17 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
         />
 
         {/* 약탈 */}
-        <ToggleCard
+        {/* <ToggleCard
           className="bg-fight"
           icon={<BiCoin />}
           title="약탈"
           point="+20점"
           active={plunder}
           onClick={() => setPlunder(!plunder)}
-        />
+        /> */}
 
         {/* 로아탄의 라스칼 */}
-        <BonusCounter
+        {/* <BonusCounter
           className="bg-gambling"
           icon={<IoDiceOutline />}
           title="로아탄의 라스칼"
@@ -358,7 +358,7 @@ export default function Bonus({ players, setPlayers, selectedPlayer }) {
           setValue={setRoatanRascal}
           min={-2}
           max={2}
-        />
+        /> */}
 
         {/* Total Bonus */}
         <div className="card-frame rounded-xl p-3 sm:p-4 text-center">
